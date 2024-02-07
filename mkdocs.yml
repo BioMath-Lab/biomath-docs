@@ -1,0 +1,4 @@
+site_name: BioMath Documents
+# site_url: https://james-willett.github.io/mkdocs-material-youtube-tutorial/
+theme:
+  name: material
