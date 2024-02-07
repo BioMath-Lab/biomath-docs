@@ -10,7 +10,7 @@
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files. -->
 
-![Alt Text](assets/logo.png)        
+![Alt Text](doc/assets/logo.png)        
 
 # Homepage
 
