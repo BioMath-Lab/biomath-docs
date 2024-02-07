@@ -10,8 +10,6 @@
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files. -->
 
-![Alt Text](doc/assets/logo.png)        
-
 # Homepage
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
@@ -80,3 +78,5 @@ def bubble_sort(items):
 :fontawesome-brands-twitter:{ .twitter }
 
 :octicons-heart-fill-24:{ .heart }
+
+![Alt Text](doc/assets/logo.png)
