@@ -79,4 +79,4 @@ def bubble_sort(items):
 
 :octicons-heart-fill-24:{ .heart }
 
-![Alt Text](doc/assets/logo.png)
+![Alt Text](assets/logo.png)
