@@ -2,7 +2,7 @@ site_name: BioMath Documents
 site_url: https://biomath-lab.github.io/biomath-docs/
 theme:
   name: material
-  logo: assets/logo.png
+  # logo: assets/logo.png
   features:
     # - navigation.instant
     # - navigation.instant.preview
