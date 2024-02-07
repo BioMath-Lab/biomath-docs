@@ -6,7 +6,7 @@ theme:
     # - navigation.instant
     # - navigation.instant.preview
     - navigation.tabs
-    - navigation.tabs.sticky
+    # - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.path
