@@ -116,7 +116,7 @@ head(lepidop_enviro.ptData)
 ```
 
 ## Get data from [GBIF](https://www.gbif.org/)
-See [https://poldham.github.io/abs/gbif.html](https://poldham.github.io/abs/gbif.html)
+See [https://poldham.github.io/abs/gbif.html](https://poldham.github.io/abs/gbif.html)  
 First sign-up for a free account [here]().
 ```r
 library(dplyr)
@@ -131,11 +131,11 @@ pwd = "LCF_sa1o0@" # your gbif.org password
 email = "macfadyen@sun.ac.za" # your email
 ```
 
-The main functions related to downloads are:
-- occ_download(): start a download on GBIF servers.
-- occ_download_prep(): preview a download request before sending to GBIF.
-- occ_download_get(): retrieve a download from GBIF to your computer.
-- occ_download_import(): load a download from your computer to R.
+The main functions related to downloads are:  
+- occ_download(): start a download on GBIF servers.  
+- occ_download_prep(): preview a download request before sending to GBIF.  
+- occ_download_get(): retrieve a download from GBIF to your computer.  
+- occ_download_import(): load a download from your computer to R.  
 
 ```r
 gbif_download = occ_data(scientificName='Lepidoptera',
