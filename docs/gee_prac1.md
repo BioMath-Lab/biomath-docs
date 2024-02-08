@@ -1,13 +1,13 @@
 # Google Earth Engine
 
 ## Google Earth Engine for ecological modelling
-### Practical 1: Getting started with Google Earth Engine
+## Practical 1: Getting started with Google Earth Engine
 Basic JavaScript rules, create, import, explore and visualising datasets
 by Sandra MacFadyen @ [https://www0.sun.ac.za/biomath/](https://www0.sun.ac.za/biomath)
 
 Access the completed practical script [here](https://code.earthengine.google.com/76ed4ea4c97a064555880dcf09f93f5f)
 
-#### Learning Objectives
+### Learning Objectives
 By the end of this practical you should be able to:
 - Understand the basic layout of Google Earth Engine platform (incl. the Code Editor).
 - Understand basic JavaScript syntax rules.
@@ -15,9 +15,9 @@ By the end of this practical you should be able to:
 - Inspect a dataset in the console.
 - Visualize datasets in the interactive map explorer.
 - Use simple functions.
-- Know where to find help.</li>
+- Know where to find help.
 
-***Access your code editor***: The first step is to access the GEE code editor. 
+### Access your code editor***: The first step is to access the GEE code editor. 
 This can be done from the earth engine [home page](https://earthengine.google.com/) by going to platform –> Code Editor. 
 Alternatively, you can access it directly from [https://code.earthengine.google.com/](https://code.earthengine.google.com)
 
@@ -25,18 +25,18 @@ Alternatively, you can access it directly from [https://code.earthengine.google.
 Take a look at the <a href=" https://developers.google.com/earth-engine/guides/playground">Google Earth Engine >> Guides >> Earth Engine Code Editor</a> section for a nice description of different panels and tabs.
 ![gee_screenshot2](assets/gee_1_2.png)
 
-***Create your own repository, folders and files***
+### Create your own repository, folders and files
 From the Scripts panel click NEW >> Repository or >> Folder or >> File
 Or if you already have a script open, click Save >> Save as..![gee_screenshot3](assets/gee_1_3.png)
 
-***Basic JavaScript syntax***
+### Basic JavaScript syntax
 Let's start off with a simple "Hello World" exercise:
 ```js
 print('Welcome to the world of GEE!');
 var myMessage = 'GEE world - Sandra was here :)'; // Variable or object
 print(myMessage);
  ```
-***Find and import datasets in the code editor***
+### Find and import datasets in the code editor
 ***Draw your own***
 Create your first import variables using the geometry tools. 
 For example, "Add a marker" or "Draw a rectangle". See the new 'geometry' variable added to the 'Imports' section? 
@@ -44,7 +44,7 @@ You can 'Edit layer properties' e.g. the name or colour from "Geometry Import" o
 It is important to 'Exit' the 'Point drawing' and '+ new layer' to avoid creating a 'GeometryCollection' instead of a 'Point' geometry.
 ![gee_screenshot3](assets/gee_1_4.png)
 
-***Create variables from known coordinates***
+### Create variables from known coordinates
 Or you can create your own variables using known coordinates. 
 
 ```js
@@ -52,7 +52,7 @@ var skukuza = ee.Geometry.Point([31.5912, -24.9947]);
 var krugerAOI = ee.Geometry.Polygon([[[30.6821, -22.2315], [30.6821, -25.5061], 
                                       [32.1542, -25.5061], [32.1542, -22.2315]]]);</code><button class="btn" id="copy-button" data-clipboard-target="#target2">Copy</button>
 ```
-***Visualise geometries***
+### Visualise geometries
 To display these new variables on the map area below, you need to use the ```Map.``` commands.
 First zoom to a location on the map and then add the new variable as a layer with user defined display/legend properties.
 
@@ -66,11 +66,11 @@ Map.centerObject(krugerAOI, 7); // Or using your geometry variable
 Map.addLayer(krugerAOI, {color: 'green'}, 'Kruger Park');
 Map.addLayer(skukuza, {color: 'red'}, 'Skukuza Camp');</
 ```
-***Find and import online GEE datasets***
+### Find and import online GEE datasets
 To find GEE datasets, use the “Search places and datasets” panel visible in the Code Editor or 
 browse datasets by satellite platform or keyword tags from the [Earth Engine Catalog](https://developers.google.com/earth-engine/datasets) page.
 
-***Images***
+### Images
 To import images from GEE you will use ```ee.Image()```. There are two ways you can do this. 
 The easiest is to use the search function and then click Import to add the dataset to your Imports section.
 ![gee_screenshot3](assets/gee_1_5.png)
@@ -86,7 +86,7 @@ print('Elevation data type', elevation.name()); // Prints data type
 Once you've done that, if you hold your mouse over your new variable/code, you'll see a yellow message pop-up asking if you want to convert it to an import record. If you click Convert, the variable will be moved to the Imports section automatically.
 ![gee_screenshot3](assets/gee_1_6.png)
 
-***Visualise images***
+### Visualise images
 To display images in your map you zoom to a location of interest and add then add the image as a layer but with more detailed display/legend properties.
 You can do this using the "Visualization Parameters" GUI or code it directly(see code box below).
 ![gee_screenshot3](assets/gee_1_7.png)
@@ -122,7 +122,7 @@ Map.addLayer(elevation, eleVis, 'Elevation with eleVis'); // See how different y
 Use the 'Inspector' to get "Point", "Pixel" and "Object" information.
 ![gee_screenshot3](assets/gee_1_9.png)
 
-***Images with multiple bands***
+### Images with multiple bands
 WorldClim BIO Variables V1
 Most of you will probably be familiar with WoldClim's [Bioclimatic Variables](https://www.worldclim.org/data/bioclim.html).
 There are 19 different variables coded bio01 to bio19 e.g. bio01 = Annual mean | bio02 = Mean diurnal | bio03 = Isothermality (bio02/bio07) | bio04 = Temperature seasonality etc.
@@ -153,7 +153,7 @@ Map.addLayer(krugerAOI, {color: 'green'}, 'Kruger Park');
 // !NB! Remember it matters what order you add variables to the map
 ```
 
-***Feature collections***
+### Feature collections
 Feature collections work in a similar way to image collections, although the display parameters and filtering conditions are slightly different.
 For example, let's display International Boundaries as polygons (i.e. vectors)
 ![gee_screenshot3](assets/gee_1_11.png)
@@ -174,7 +174,7 @@ Map.setCenter(23.63, 5.68, 2);
 Map.addLayer(countries, cntVis, 'World Borders');
 ```
 
-***Filtering feature collections***
+### Filtering feature collections
 Now to filter the features we need to know what column/field our contains the information we would like to filter for. In this case it's a "string" field named "country_na" as indicated in the "TABLE SCHEMA" in the figure above.
 
 ```js
@@ -209,7 +209,7 @@ Map.centerObject(kruger, 7);
 Map.addLayer(kruger,{fillColor:'ceea89',color:'789630',width:0.5}, 'Kruger National Park');
 ```
 
-***Image collections filtered by dates and bands***
+### Image collections filtered by dates and bands
 In many cases you will be dealing with image collections with a series of bands over a period of time. To filter for the date range you're interested in you will use the ee.Filter.date command. Let's test this using the 500m monthly burned area product from MODIS.
 ![gee_screenshot3](assets/gee_1_13.png)
 
@@ -232,7 +232,7 @@ Map.centerObject(krugerAOI, 7);
 Map.addLayer(burnArea, burnVis, 'Areas Burnt Oct 2018');
 ```
 
-***Simple functions and single images***
+### Simple functions and single images
 There are many built-in functions you can use to process and analyse the different GEE data products. We will be going through a number of these in our different practical sessions but for now let's look at some simple ones to get you started. The most common is probably the .clip function, which we'll test on our elevation data from earlier.
 
 ```js
@@ -270,7 +270,7 @@ Map.addLayer(slope, slopeVis, 'Slope with palette');
 ```
 ![gee_screenshot3](assets/gee_1_14.png)
 
-***Simple functions and image collections***
+### Simple functions and image collections
 Applying functions to image collections starts to get a little trickier. For example, let's try summarise some Sentinel-2 imagery (Sentinel-2 MSI: MultiSpectral Instrument, Level-1C)and change our display properties at the same time.
 ![gee_screenshot3](assets/gee_1_15.png)
 
@@ -311,6 +311,6 @@ Map.addLayer(cop2Med, {bands:['B8','B4','B3'], min:0, max: 3000}, 'False-colour'
 
 ![gee_screenshot3](assets/gee_1_17.png)
 
-***Sharing your code to complete the practical assignments***
+### Sharing your code to complete the practical assignments
 To complete the practical exercise below you need to know how to share your scripts with us. Simply click on "Get Link" - the actual button NOT the dropdown arrow - Then click the "Click to copy link" button and paste that in an email. !NB! Please remember to add the prac number in the header.
 ![gee_screenshot3](assets/gee_1_18.png)
