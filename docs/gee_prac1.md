@@ -17,7 +17,8 @@ By the end of this practical you should be able to:
 - Use simple functions.
 - Know where to find help.
 
-### Access your code editor***: The first step is to access the GEE code editor. 
+### Access your code editor
+The first step is to access the GEE code editor. 
 This can be done from the earth engine [home page](https://earthengine.google.com/) by going to platform –> Code Editor. 
 Alternatively, you can access it directly from [https://code.earthengine.google.com/](https://code.earthengine.google.com)
 
