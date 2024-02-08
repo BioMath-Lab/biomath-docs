@@ -132,10 +132,10 @@ email = "macfadyen@sun.ac.za" # your email
 ```
 
 The main functions related to downloads are:  
-- occ_download(): start a download on GBIF servers.  
-- occ_download_prep(): preview a download request before sending to GBIF.  
-- occ_download_get(): retrieve a download from GBIF to your computer.  
-- occ_download_import(): load a download from your computer to R.  
+`occ_download()`: start a download on GBIF servers.  
+`occ_download_prep()`: preview a download request before sending to GBIF.  
+`occ_download_get()`: retrieve a download from GBIF to your computer.  
+`occ_download_import()`: load a download from your computer to R.  
 
 ```r
 gbif_download = occ_data(scientificName='Lepidoptera',
