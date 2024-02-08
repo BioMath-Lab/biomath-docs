@@ -4,6 +4,7 @@ site_url: https://biomath-lab.github.io/biomath-docs/
 nav:
   - Home: 'index.md'
   - About: 'about.md'
+  - Spatial R: 'spatial_r.md'
   - Species Distribution Modelling: 'sdm.md'
   - Google Earth Engine: 'gee.md'
   - Other Resources: 'resources.md'
