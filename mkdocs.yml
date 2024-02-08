@@ -4,8 +4,17 @@ site_url: https://biomath-lab.github.io/biomath-docs/
 nav:
   - Home: 'index.md'
   - About: 'about.md'
-  - Page1: 'page1.md'
-  - Page2: 'page2.md'
+  - Species Distribution Modelling: 'sdm.md'
+  - Google Earth Engine: 'gee.md'
+
+# nav:
+#   - Home: 'index.md'
+#   - 'User Guide':
+#     - 'Writing your docs': 'writing-your-docs.md'
+#     - 'Styling your docs': 'styling-your-docs.md'
+#   - About:
+#     - 'License': 'license.md'
+#     - 'Release Notes': 'release-notes.md'
 
 theme:
   name: material
