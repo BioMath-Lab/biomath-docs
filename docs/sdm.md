@@ -6,7 +6,7 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
-## LOAD LIBRARIES
+## Load libraries
 ```
 # See https://rsh249.github.io/bioinformatics/spatial.html
 
@@ -29,7 +29,7 @@ library(reshape2)     ## dcast(), melt()
 library(zetadiv)
 ```
 
-## DOWNLOAD [WorldClim](https://www.worldclim.org/data/index.html) CLIMATE DATA
+## Download [WorldClim](https://www.worldclim.org/data/index.html) climate data
 ```
 # Download the WorldClim Bioclimatic variables for the world at a 10 arc-minute resolution
 bio_10m = getData('worldclim', var='bio', res=10, path='D:/Workshops/Zeta_MSGDM/Data') # Set your own path directory
@@ -42,7 +42,7 @@ bio_10m[[1]] #BIO1 = Annual Mean Temperature
 ```
 Read descriptions/definitions of [Bioclimatic variables](https://www.worldclim.org/data/bioclim.html).
 
-## CROP TO YOUR AREA OF INTEREST 
+## Crop to your area of interest
 ```{r}
 # Define 'extent' of boundary
 # South Africa
@@ -53,7 +53,7 @@ rsaExt_bio_10m = crop(bio_10m, rsa_ext)
 plot(rsaExt_bio_10m[[1]]) # Basic plotting 
 ```
 
-## OR CROP TO COUNTRY BORDERS
+## Or crop to country borders
 ```
 # Using GADM (gives a SpatialPolygonsDataFrame)
 rsa = getData('GADM', country='South Africa', level=0, path='D:/Workshops/Zeta_MSGDM/Data')
@@ -81,7 +81,7 @@ plot(rsa_bio_10m[[1]]) # See result
 # rsa_bio_10m = worldclim_country("South Africa", var="tmin", path='D:/Workshops/Zeta_MSGDM/Data')
 ```
 
-## EXTRACT RASTER VALUES TO POINTS
+## Extract raster values to points
 ```
 # Create 100 random points across South Africa
 random_pts = spsample(rsa, n=100, type="random")    
@@ -98,7 +98,7 @@ bio_values_df = cbind.data.frame(coordinates(random_pts), bio_values_1)
 head(bio_values_df)
 ```
 
-## USE YOUR OWN TABULAR DATA
+## Uuse your own tabular data
 ```
 # Read directly from csv file
 all_lepidoptera.sf = st_as_sf(read.csv('D:/Workshops/Zeta_MSGDM/Data/0097482-230224095556074.csv'), coords = c("x", "y"), crs = 4326)  
@@ -116,7 +116,7 @@ names(lepidop_enviro.ptData)
 head(lepidop_enviro.ptData)
 ```
 
-## GET DATA FROM GBIF
+## Get data from [GBIF](https://www.gbif.org/)
 See [https://poldham.github.io/abs/gbif.html](https://poldham.github.io/abs/gbif.html)
 First sign-up for a free account [here]().
 ```
@@ -154,13 +154,13 @@ lepidop.sf = st_as_sf(lepidop.df, coords = c("decimalLongitude", "decimalLatitud
 plot(lepidop.sf['stateProvince'])
 ```
 
-> #### Citing your download
+> ### Citing your download
 If you end up using your download in a research paper, you will want to cite the download’s DOI. Please see these [citation guidelines](https://www.gbif.org/citation-guidelines) for properly citing your download.
 When using this dataset please use the following citation: 
 GBIF.org (16 March 2023) GBIF Occurrence Download [https://doi.org/10.15468/dl.uvu2qm](https://doi.org/10.15468/dl.uvu2qm)
 
 
-## WORKING WITH SPECIES OCCURENCE AND ENVIRONMENTAL DATA TABLES
+## Working with species occurence and environmental data tables
 ```
 # CONVERT TO DATAFRAME
 # all_lepidoptera.df = as.data.frame(all_lepidoptera.sf)
@@ -190,7 +190,7 @@ head(lepidop_enviro.df)
 str(lepidop_enviro.df)
 ```
 
-## GET YOUR TABLE INTO THE RIGHT FORMAT
+## Get your table into the right format
 ```
 # str(lepidop_enviro.df)
 head(lepidop_enviro.df)
@@ -236,7 +236,6 @@ sppTab = as.data.frame(lepidop_enviro.pa_noNA[,c(1:3,23:1109)])
 long = sppTab %>%
   pivot_longer(!c(unqIDF,X,Y), names_to = "nameF", values_to = "value")
 ```
-
 
 ```
 # Dealing with biases associated with presence-only data
