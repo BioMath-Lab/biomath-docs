@@ -105,13 +105,13 @@ st_area(RSA) / 1000000
 
 #### Where to find free GIS data layers
 
-[https://mapcruzin.com/](https://mapcruzin.com/free-south-africa-arcgis-maps-shapefiles.htm
-[https://data.humdata.org/dataset/](https://data.humdata.org/dataset/cod-ab-zaf?)
-[https://africaopendata.org/](https://africaopendata.org/group/south-africa?res_format=SHP)
-[https://egis.environment.gov.za/data_egis/](https://egis.environment.gov.za/data_egis/data_download/current)
-[https://bgis.sanbi.org/SpatialDataset](https://bgis.sanbi.org/SpatialDataset)
-[https://dataportal-mdb-sa.opendata.arcgis.com/](https://dataportal-mdb-sa.opendata.arcgis.com/)
-[http://geoportal.icpac.net/](http://geoportal.icpac.net/layers/?limit=100&offset=0)
+[https://mapcruzin.com/](https://mapcruzin.com/free-south-africa-arcgis-maps-shapefiles.htm)  
+[https://data.humdata.org/dataset/](https://data.humdata.org/dataset/cod-ab-zaf?)  
+[https://africaopendata.org/](https://africaopendata.org/group/south-africa?res_format=SHP)  
+[https://egis.environment.gov.za/data_egis/](https://egis.environment.gov.za/data_egis/data_download/current)  
+[https://bgis.sanbi.org/SpatialDataset](https://bgis.sanbi.org/SpatialDataset)  
+[https://dataportal-mdb-sa.opendata.arcgis.com/](https://dataportal-mdb-sa.opendata.arcgis.com/)  
+[http://geoportal.icpac.net/](http://geoportal.icpac.net/layers/?limit=100&offset=0)  
 
 #### Add your own data layers
 
@@ -320,13 +320,12 @@ bio1.rsa.mask = mask(bio1.rsa, rsa_country)
 plot(bio1.rsa.mask)
 ```
 #### Spatial aggregation
-***Aggregate using a function***
 ```r
+# Aggregate using a function
 bio1.rsax3 = aggregate(bio1.rsa, 3, fun=mean)
 plot(bio1.rsax3) #dimensions : 26, 33, 858  (nrow, ncol, ncell) | resolution : 0.5, 0.5  (x, y)
-```
-***Raster calculations***
-```r
+
+# Raster calculations
 cellStats(bio1.rsa,range);cellStats(bio1.rsa,mean)
 ```
 #### Extracting Raster Data
@@ -351,7 +350,7 @@ head(pts.data)
 # Create histogram of extracted values
 summary(pts.data)
 ```
-#### Perform binning with custom breaks
+#### Bin data using custom breaks
 ```r
 pts.data@data = pts.data@data %>% mutate(binBio1 = cut(bio1, breaks=c(0, 128, 150, 200, 241)))
 
