@@ -7,7 +7,7 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
 ## Load libraries
-```
+```r
 # See https://rsh249.github.io/bioinformatics/spatial.html
 
 # install.packages("ENMeval", INSTALL_opts="--no-multiarch")
@@ -30,7 +30,7 @@ library(zetadiv)
 ```
 
 ## Download [WorldClim](https://www.worldclim.org/data/index.html) climate data
-```
+```r
 # Download the WorldClim Bioclimatic variables for the world at a 10 arc-minute resolution
 bio_10m = getData('worldclim', var='bio', res=10, path='D:/Workshops/Zeta_MSGDM/Data') # Set your own path directory
 
@@ -43,7 +43,7 @@ bio_10m[[1]] #BIO1 = Annual Mean Temperature
 Read descriptions/definitions of [Bioclimatic variables](https://www.worldclim.org/data/bioclim.html).
 
 ## Crop to your area of interest
-```{r}
+```r
 # Define 'extent' of boundary
 # South Africa
 rsa_ext = extent(16, 33, -35, -22)
@@ -54,7 +54,7 @@ plot(rsaExt_bio_10m[[1]]) # Basic plotting
 ```
 
 ## Or crop to country borders
-```
+```r
 # Using GADM (gives a SpatialPolygonsDataFrame)
 rsa = getData('GADM', country='South Africa', level=0, path='D:/Workshops/Zeta_MSGDM/Data')
 # rsa = sf::st_as_sf(rsa)
@@ -65,14 +65,13 @@ rsa = getData('GADM', country='South Africa', level=0, path='D:/Workshops/Zeta_M
 # cc = country_codes()
 # View(cc)
 
-
 # Basic National map
 ggplot()+
   geom_sf(data=sf::st_as_sf(rsa))+
   ggtitle("South Africa")
 ```
 
-```
+```r
 # Crop Bioclimatic variables to South African border
 rsa_bio_10m = crop(bio_10m, rsa)
 plot(rsa_bio_10m[[1]]) # See result
@@ -82,7 +81,7 @@ plot(rsa_bio_10m[[1]]) # See result
 ```
 
 ## Extract raster values to points
-```
+```r
 # Create 100 random points across South Africa
 random_pts = spsample(rsa, n=100, type="random")    
 
@@ -98,18 +97,18 @@ bio_values_df = cbind.data.frame(coordinates(random_pts), bio_values_1)
 head(bio_values_df)
 ```
 
-## Uuse your own tabular data
-```
+## Use your own tabular data
+```r
 # Read directly from csv file
 all_lepidoptera.sf = st_as_sf(read.csv('D:/Workshops/Zeta_MSGDM/Data/0097482-230224095556074.csv'), coords = c("x", "y"), crs = 4326)  
 plot(all_lepidoptera.sf['family'])
 
 ###############################################################################
 # EXTRACT RASTER DATA TO POINT LOCALITIES
-#Extract raster value by points
+# Extract raster value by points
 lepidop_enviro = raster::extract(rsa_bio_10m, all_lepidoptera.sf)
 lepidop_enviro
-#Combine raster values with point and save as a CSV file.
+# Combine raster values with point and save as a CSV file.
 lepidop_enviro.ptData = cbind(all_lepidoptera.sf, lepidop_enviro)
 # Check output
 names(lepidop_enviro.ptData)
@@ -119,13 +118,13 @@ head(lepidop_enviro.ptData)
 ## Get data from [GBIF](https://www.gbif.org/)
 See [https://poldham.github.io/abs/gbif.html](https://poldham.github.io/abs/gbif.html)
 First sign-up for a free account [here]().
-```
+```r
 library(dplyr)
 library(readr)  
 library(rgbif) # for occ_download
 ```
 
-```
+```r
 # fill in your gbif.org credentials 
 user = "sandsmac" # your gbif.org username 
 pwd = "LCF_sa1o0@" # your gbif.org password
@@ -133,12 +132,12 @@ email = "macfadyen@sun.ac.za" # your email
 ```
 
 The main functions related to downloads are:
-> - occ_download(): start a download on GBIF servers.
-> - occ_download_prep(): preview a download request before sending to GBIF.
-> - occ_download_get(): retrieve a download from GBIF to your computer.
-> - occ_download_import(): load a download from your computer to R.
+- occ_download(): start a download on GBIF servers.
+- occ_download_prep(): preview a download request before sending to GBIF.
+- occ_download_get(): retrieve a download from GBIF to your computer.
+- occ_download_import(): load a download from your computer to R.
 
-```
+```r
 gbif_download = occ_data(scientificName='Lepidoptera',
                          country='ZA',
                          hasCoordinate=TRUE,
@@ -154,14 +153,14 @@ lepidop.sf = st_as_sf(lepidop.df, coords = c("decimalLongitude", "decimalLatitud
 plot(lepidop.sf['stateProvince'])
 ```
 
-> ### Citing your download
+### Citing your download
 If you end up using your download in a research paper, you will want to cite the download’s DOI. Please see these [citation guidelines](https://www.gbif.org/citation-guidelines) for properly citing your download.
 When using this dataset please use the following citation: 
 GBIF.org (16 March 2023) GBIF Occurrence Download [https://doi.org/10.15468/dl.uvu2qm](https://doi.org/10.15468/dl.uvu2qm)
 
 
 ## Working with species occurence and environmental data tables
-```
+```r
 # CONVERT TO DATAFRAME
 # all_lepidoptera.df = as.data.frame(all_lepidoptera.sf)
 all_lepidoptera.df = as.data.frame(cbind(all_lepidoptera.sf, st_coordinates(all_lepidoptera.sf)))[,-11]
@@ -178,7 +177,7 @@ head(lepidop_enviro.df)
 # summary(lepidop_enviro.df)
 ```
 
-```
+```r
 # SET COLUMN FORMATS
 lepidop_enviro.df$nameF = as.factor(lepidop_enviro.df$scientific)
 lepidop_enviro.df$dateT = as.Date(lepidop_enviro.df$date)
@@ -191,7 +190,7 @@ str(lepidop_enviro.df)
 ```
 
 ## Get your table into the right format
-```
+```r
 # str(lepidop_enviro.df)
 head(lepidop_enviro.df)
 
@@ -203,9 +202,10 @@ head(lepidop_enviro.pa)
 # View(lepidop_enviro.pa)
 ```
 
-
-## [https://rdrr.io/cran/zetadiv/man/Zeta.msgdm.html](https://rdrr.io/cran/zetadiv/man/Zeta.msgdm.html)
-```
+## Multi-site generalised dissimilarity modelling for a set of environmental variables and distances
+### How to Compute Compositional Turnover Using Zeta Diversity
+Using zetadiv: [https://rdrr.io/cran/zetadiv](https://rdrr.io/cran/zetadiv/man/Zeta.msgdm.html)
+```r
 lepidop_enviro.pa_noNA = lepidop_enviro.pa[complete.cases(lepidop_enviro.pa), ] 
 Sitexy = as.data.frame(lepidop_enviro.pa_noNA[,1:3])
 # xy = st_as_sf(Sitexy, coords = c("X", "Y"), crs = 4326)
@@ -231,13 +231,13 @@ sppTab = as.data.frame(lepidop_enviro.pa_noNA[,c(1:3,23:1109)])
 # plot(exFormat1b[[1]])
 ```
 
-```
+```r
 # OR USE tidyr
 long = sppTab %>%
   pivot_longer(!c(unqIDF,X,Y), names_to = "nameF", values_to = "value")
 ```
 
-```
+```r
 # Dealing with biases associated with presence-only data
 #--------------------------------------
 # weight by site richness
@@ -258,9 +258,10 @@ gdmTab.sf = formatsitepair(long, bioFormat=2, XColumn="X", YColumn="Y",
                             predData=envTab, sppFilter=10)
 ```
 
-```
-# gdm analysis
-#--------------------------------------------------------
+### `gdm`: Generalized Dissimilarity Modeling
+[Read more about `gdm` analysis here](https://github.com/fitzLab-AL/GDM)
+
+```r
 gdm.1 = gdm(gdmTab.sf, geo=T)
 #summary(gdm.1)
 str(gdm.1)
@@ -278,7 +279,7 @@ plot(gdm.1.splineDat$x[,"Geographic"], gdm.1.splineDat$y[,"Geographic"], lwd=3,
      type="l", xlab="Geographic distance", ylab="Partial ecological distance")
 ```
 
-```
+```r
 zeta.ispline = Zeta.msgdm(sppTab[,c(4:1088)], envTab[,c(4:20)], xy, order=2,
                           rescale = TRUE,
                           rescale.pred = TRUE,
@@ -293,10 +294,3 @@ zeta.ispline = Zeta.msgdm(sppTab[,c(4:1088)], envTab[,c(4:20)], xy, order=2,
 dev.new()
 Plot.ispline(msgdm = zeta.ispline, data.env = envTab[c(4:20)], distance = TRUE)
 ```
-
-
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
