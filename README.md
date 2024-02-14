@@ -21,6 +21,4 @@ details
 
 ## Acknowledgments
 
-  - Hat tip to anyone whose code is used
-  - Inspiration
-  - etc
+- [National Institute for Theoretical and Computational Sciences (NITheCS)](https://nithecs.ac.za/)
