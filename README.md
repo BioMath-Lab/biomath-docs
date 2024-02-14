@@ -7,11 +7,10 @@ Welcome to the Mathematical Biosciences (BioMath) GitHub repository, a dedicated
 
 ## Authors
 
-  - **Sandra MacFadyen** - *Provided README Template* -
-    [PurpleBooth]([https://github.com/PurpleBooth](https://www0.sun.ac.za/biomath/pf/sandra-macfadyen/))
+  - [**Sandra MacFadyen**](https://www0.sun.ac.za/biomath/pf/sandra-macfadyen/)
 
 See also the list of
-[contributors](https://github.com/PurpleBooth/a-good-readme-template/contributors)
+[contributors](working.md)
 who participated in this project.
 
 ## License
