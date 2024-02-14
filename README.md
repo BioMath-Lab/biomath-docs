@@ -1,84 +1,14 @@
 # ![biomath](docs/assets/logo.png)
 # Mathematical Bioscience Lab
-<!-- https://www.youtube.com/watch?v=Q-YA_dA8C20 -->
+Our lab is a multidisciplinary research team at the interface of mathematics and biology/life sciences. As part of the Department of Mathematical Sciences at Stellenbosch University in South Africa, we are a dynamic research group led by Prof Cang Hui, a SARChI Chair in Mathematical and Theoretical Physical Biosciences. Our interests lie in proposing models and theories for explaining emerging patterns in ecology. Ecology studies biodiversity in its variety and complexity. As ecological processes are highly complex and adaptive, we rely on the simplicity of mathematical language to build models and theoretical frameworks.
 
 # BioMath Documents
-
-One Paragraph of the project description
-
-Initially appeared on
-[gist](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2). But the page cannot open anymore so that is why I have moved it here.
-
-## Getting Started
-
-These instructions will give you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on deploying the project on a live system.
-
-### Prerequisites
-
-Requirements for the software and other tools to build, test and push 
-- [Example 1](https://www.example.com)
-- [Example 2](https://www.example.com)
-
-### Installing
-
-A step by step series of examples that tell you how to get a development
-environment running
-
-Say what the step will be
-
-    Give the example
-
-And repeat
-
-    until finished
-
-End with an example of getting some data out of the system or using it
-for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Sample Tests
-
-Explain what these tests test and why
-
-    Give an example
-
-### Style test
-
-Checks if the best practices and the right coding style has been used.
-
-    Give an example
-
-## Deployment
-
-Add additional notes to deploy this on a live system
-
-## Built With
-
-  - [Contributor Covenant](https://www.contributor-covenant.org/) - Used
-    for the Code of Conduct
-  - [Creative Commons](https://creativecommons.org/) - Used to choose
-    the license
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
-of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [Semantic Versioning](http://semver.org/) for versioning. For the versions
-available, see the [tags on this
-repository](https://github.com/PurpleBooth/a-good-readme-template/tags).
+Welcome to the Mathematical Biosciences (BioMath) GitHub repository, a dedicated space for advancing the understanding and conservation of biodiversity through computational science. Here, we offer an array of R and Python workflows and coding tutorials designed specifically for modeling ecosystem complexity. Our resources are tailored to support researchers, conservationists, and students in their quest to unravel the intricate dynamics of ecosystems and to apply these insights towards effective biodiversity conservation strategies. Whether you are looking to enhance your analytical skills, develop sophisticated models, or explore innovative approaches to ecological research, our repository serves as a bridge between mathematical biosciences and practical conservation efforts. Dive into our content to discover tools and techniques that empower data-driven decision-making and foster a deeper connection with the natural world.
 
 ## Authors
 
-  - **Billie Thompson** - *Provided README Template* -
-    [PurpleBooth](https://github.com/PurpleBooth)
+  - **Sandra MacFadyen** - *Provided README Template* -
+    [PurpleBooth]([https://github.com/PurpleBooth](https://www0.sun.ac.za/biomath/pf/sandra-macfadyen/))
 
 See also the list of
 [contributors](https://github.com/PurpleBooth/a-good-readme-template/contributors)
@@ -86,8 +16,8 @@ who participated in this project.
 
 ## License
 
-This project is licensed under the [CC0 1.0 Universal](LICENSE.md)
-Creative Commons License - see the [LICENSE.md](LICENSE.md) file for
+This project is licensed under the [MIT License](LICENSE.md)
+MIT License - see the [LICENSE.md](LICENSE.md) file for
 details
 
 ## Acknowledgments
