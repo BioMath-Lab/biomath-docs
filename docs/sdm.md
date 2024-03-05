@@ -126,9 +126,9 @@ library(rgbif) # for occ_download
 
 ```r
 # fill in your gbif.org credentials 
-user = "sandsmac" # your gbif.org username 
-pwd = "LCF_sa1o0@" # your gbif.org password
-email = "macfadyen@sun.ac.za" # your email
+user = "xxxxxx" # your gbif.org username 
+pwd = "xxxxxx" # your gbif.org password
+email = "xxxx@xxxxx" # your email
 ```
 
 The main functions related to downloads are:  
