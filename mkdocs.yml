@@ -21,7 +21,7 @@ nav:
 theme:
   name: material
   # logo: assets/b3_logo.pngsu_v1
-  logo: assets/su_v1.png
+  logo: assets/su_w1.png
   features:
     # - navigation.instant
     # - navigation.instant.preview
