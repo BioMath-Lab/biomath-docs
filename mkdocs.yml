@@ -20,7 +20,8 @@ nav:
 
 theme:
   name: material
-  logo: assets/b3_logo.png
+  # logo: assets/b3_logo.pngsu_v1
+  logo: assets/su_v1.png
   features:
     # - navigation.instant
     # - navigation.instant.preview
@@ -59,11 +60,11 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/james-willett
+      link: https://github.com/BioMath-Lab/biomath-docs
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/TheJamesWillett
+      link: https://twitter.com/xxxx
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/willettjames/
+      link: https://www.linkedin.com/xxxxx
 
 markdown_extensions:
   - pymdownx.highlight:
