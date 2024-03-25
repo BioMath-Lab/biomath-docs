@@ -12,71 +12,25 @@
 
 # Homepage
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+# ![biomath](assets/logo.png)
+## Mathematical Biosciences Lab
+Our lab is a multidisciplinary research team at the interface of mathematics and biology/life sciences. As part of the Department of Mathematical Sciences at Stellenbosch University in South Africa, we are a dynamic research group led by Prof Cang Hui, a SARChI Chair in Mathematical and Theoretical Physical Biosciences. Our interests lie in proposing models and theories for explaining emerging patterns in ecology. Ecology studies biodiversity in its variety and complexity. As ecological processes are highly complex and adaptive, we rely on the simplicity of mathematical language to build models and theoretical frameworks.
 
-## Code Annotation Examples
+## BioMath Documents
+Welcome to the Mathematical Biosciences (BioMath) GitHub repository, a dedicated space for advancing the understanding and conservation of biodiversity through computational science. Here, we offer an array of R and Python workflows and coding tutorials designed specifically for modeling ecosystem complexity. Our resources are tailored to support researchers, conservationists, and students in their quest to unravel the intricate dynamics of ecosystems and to apply these insights towards effective biodiversity conservation strategies. Whether you are looking to enhance your analytical skills, develop sophisticated models, or explore innovative approaches to ecological research, our repository serves as a bridge between mathematical biosciences and practical conservation efforts. Dive into our content to discover tools and techniques that empower data-driven decision-making and foster a deeper connection with the natural world.
 
-### Codeblocks
+## Authors
 
-Some `code` goes here.
+  - [**Sandra MacFadyen**](https://www0.sun.ac.za/biomath/pf/sandra-macfadyen/)
 
-### Plain codeblock
+See also the list of [contributors](working.md) who participated in this project.
 
-A plain codeblock:
+## License
 
-```
-Some code here
-def myfunction()
-// some comment
-```
+This project is licensed under the [MIT License](LICENSE.md) MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-#### Code for a specific language
+## Acknowledgments
 
-Some more code with the `py` at the start:
-
-``` py
-import tensorflow as tf
-def whatever()
-```
-
-#### With a title
-
-``` py title="bubble_sort.py"
-def bubble_sort(items):
-    for i in range(len(items)):
-        for j in range(len(items) - 1 - i):
-            if items[j] > items[j + 1]:
-                items[j], items[j + 1] = items[j + 1], items[j]
-```
-
-#### With line numbers
-
-``` py linenums="1"
-def bubble_sort(items):
-    for i in range(len(items)):
-        for j in range(len(items) - 1 - i):
-            if items[j] > items[j + 1]:
-                items[j], items[j + 1] = items[j + 1], items[j]
-```
-
-#### Highlighting lines
-
-``` py hl_lines="2 3"
-def bubble_sort(items):
-    for i in range(len(items)):
-        for j in range(len(items) - 1 - i):
-            if items[j] > items[j + 1]:
-                items[j], items[j + 1] = items[j + 1], items[j]
-```
-
-## Icons and Emojs
-
-:smile: 
-
-:fontawesome-regular-face-laugh-wink:
-
-:fontawesome-brands-twitter:{ .twitter }
-
-:octicons-heart-fill-24:{ .heart }
+- [National Institute for Theoretical and Computational Sciences (NITheCS)](https://nithecs.ac.za/)
 
 ![Alt Text](assets/logo.png)
