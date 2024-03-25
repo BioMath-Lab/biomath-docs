@@ -1,6 +1,6 @@
 # Science-i
-
 ![logo](assets/logo_all_v2.png)
+
 
 [Science-i: Bridging Worlds Competition 2024](https://science-i.org/bridging-worlds-2024/){:target="_blank"}
 Our proposal below aligns with the competition's focus on innovative, impactful research in forest science, leveraging advanced computational resources and global biodiversity databases to address critical ecological challenges.
