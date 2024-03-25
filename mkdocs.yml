@@ -1,6 +1,7 @@
 site_name: BioMath Documents and Tutorials
 site_url: https://biomath-lab.github.io/biomath-docs/
 # logo: assets/favicon.ico
+favicon: assets/favicon.ico
 
 nav:
   - Home: 'index.md'
