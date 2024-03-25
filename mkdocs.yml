@@ -20,7 +20,7 @@ nav:
 
 theme:
   name: material
-  # logo: assets/b3_logo.pngsu_v1
+  # logo: assets/b3_logo.png#su_v1
   logo: assets/su_w2.png
   features:
     # - navigation.instant
