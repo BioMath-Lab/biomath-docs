@@ -11,6 +11,9 @@ nav:
   - Google Earth Engine: 'gee.md'
   - Science-i: 'science-i.md'
   - Other Resources: 'resources.md'
+  - Dissimilarity Cubes: 'dissimilarity-cube.md'
+  - Invasibility Cubes: 'invasibility-cube.md'
+  - Impact Indicators: 'impact-indicators.md'
 
 # nav:
 #   - Home: 'index.md'
