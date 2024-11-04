@@ -6,6 +6,8 @@ favicon: assets/favicon.ico
 nav:
   - Home: 'index.md'
   - About: 'about.md'
+  - Projects: # 'projects.md'
+      - Science-i: 'science-i.md'
   - Tutorials:
       - Spatial R: spatial_r/index.md
       - Species distribution modelling: sdm/index.md
@@ -14,7 +16,7 @@ nav:
   # - Spatial R: 'spatial_r.md'
   # - Species Distribution Modelling: 'sdm.md'
   # - Google Earth Engine: 'gee.md'
-  - Science-i: 'science-i.md'
+  # - Science-i: 'science-i.md'
   # - Other Resources: 'resources.md'
   - Dissimilarity Cubes: 'dissimilarity-cube.md'
   - Invasibility Cubes: 'invasibility-cube.md'
