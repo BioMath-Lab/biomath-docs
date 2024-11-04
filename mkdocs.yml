@@ -6,11 +6,16 @@ favicon: assets/favicon.ico
 nav:
   - Home: 'index.md'
   - About: 'about.md'
-  - Spatial R: 'spatial_r.md'
-  - Species Distribution Modelling: 'sdm.md'
-  - Google Earth Engine: 'gee.md'
+  - Tutorials:
+      - Spatial R: spatial_r/index.md
+      - Species distribution modelling: sdm/index.md
+      - Google Earth Engine: gee/index.md
+      - Other resources: resources/index.md
+  # - Spatial R: 'spatial_r.md'
+  # - Species Distribution Modelling: 'sdm.md'
+  # - Google Earth Engine: 'gee.md'
   - Science-i: 'science-i.md'
-  - Other Resources: 'resources.md'
+  # - Other Resources: 'resources.md'
   - Dissimilarity Cubes: 'dissimilarity-cube.md'
   - Invasibility Cubes: 'invasibility-cube.md'
   - Impact Indicators: 'impact-indicators.md'
@@ -28,6 +33,7 @@ theme:
   name: material
   # logo: assets/b3_logo.png#su_v1
   logo: assets/su_w2.png
+  nav_style: tabs
   features:
     # - navigation.instant
     # - navigation.instant.preview
