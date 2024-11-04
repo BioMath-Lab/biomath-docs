@@ -8,7 +8,7 @@ nav:
   - About: 'about.md'
   - Projects: 'projects.md'
       - Science-i: 'science-i.md'
-  - Tutorials:
+  - Tutorials: 'tutorials.md'
       - Spatial R: spatial_r.md
       - Species distribution modelling: sdm.md
       - Google Earth Engine: gee.md

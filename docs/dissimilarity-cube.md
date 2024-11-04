@@ -1,8 +1,8 @@
 # Dissimilarity cube
 ![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
-{:.alert .alert-warning}
-This page is not yet complete.
+<!-- {:.alert .alert-warning}
+This page is not yet complete. -->
 
 ## Specification for dissimilarity cubes and their production
 This document presents the specification for “dissimilarity cubes”, to map compositional dissimilarity and turnover of species using occurrence data. It provides a workflow to compile co-occurrence matrices for species in a specified geographic area, source georeferenced environmental data, and map compositional dissimilarity using ‘MS-GDM' and 'zetadiv'.

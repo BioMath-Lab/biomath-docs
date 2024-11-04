@@ -1,8 +1,8 @@
 # Invasibility cube
 ![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
-{:.alert .alert-warning}
-This page is not yet complete.
+<!-- {:.alert .alert-warning}
+This page is not yet complete. -->
 
 ## Specification for invasibility cubes and their production
 This document presents the specification for "invasibility cubes”, to visualise invasion fitness and invasibility. It provides a workflow to visualise invasion fitness, using species occurrence data, Invasive Alien Species (IAS) lists, and species traits to calculate trait centrality, visualise trait dispersion, estimate interaction strength, and assess invasibility.

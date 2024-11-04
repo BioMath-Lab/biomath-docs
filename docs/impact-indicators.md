@@ -1,8 +1,8 @@
 # Impact indicators
 ![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
-{:.alert .alert-warning}
-This page is not yet complete.
+<!-- {:.alert .alert-warning}
+This page is not yet complete. -->
 
 ## Specification for calculation of impact indicators of Alien Taxa
 This document demonstrate the computation of impact indicator of alien species using the `impact_indicator`. The `impact_indicator` feeds in species occurrence cube from the `b3gbi::process_cube` using `taxaFun` and processed Environmental Impact Classification of Alien Taxa (EICAT) impact score of species using `impact_cat`. The code in on GitHub repository https://github.com/mmyahaya/impact.indicator.
