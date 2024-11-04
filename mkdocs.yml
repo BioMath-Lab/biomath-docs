@@ -6,8 +6,6 @@ favicon: assets/favicon.ico
 nav:
   - Home: 'index.md'
   - About: 'about.md'
-  - Projects: 'projects.md'
-  - Tutorials: 'spatial_r.md'
   - Dissimilarity Cubes: 'dissimilarity-cube.md'
   - Invasibility Cubes: 'invasibility-cube.md'
   - Impact Indicators: 'impact-indicators.md'
