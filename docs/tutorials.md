@@ -7,7 +7,7 @@ Our lab is a multidisciplinary research team at the interface of mathematics and
 ## BioMath Tutorials
 Welcome to the tutorials section! Here you’ll find a range of resources to help you get started with various tools and techniques.
 
-- [Spatial R](spatial_r/index.md): Learn about spatial analysis in R.
-- [Species Distribution Modelling](sdm/index.md): Techniques and tools for species distribution modeling.
-- [Google Earth Engine](gee/index.md): An introduction to remote sensing and analysis with Google Earth Engine.
-- [Other Resources](resources/index.md): Additional materials and resources.
+- [Spatial R](spatial_r.md): Learn about spatial analysis in R.
+- [Species Distribution Modelling](sdm.md): Techniques and tools for species distribution modeling.
+- [Google Earth Engine](gee.md): An introduction to remote sensing and analysis with Google Earth Engine.
+- [Other Resources](resources.md): Additional materials and resources.
