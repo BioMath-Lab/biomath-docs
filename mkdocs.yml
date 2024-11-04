@@ -6,7 +6,7 @@ favicon: assets/favicon.ico
 nav:
   - Home: 'index.md'
   - About: 'about.md'
-  - Projects: # 'projects.md'
+  - Projects: 'projects.md'
       - Science-i: 'science-i.md'
   - Tutorials:
       - Spatial R: spatial_r/index.md
