@@ -9,10 +9,14 @@ nav:
   - Projects: 'projects.md'
       - Science-i: 'science-i.md'
   - Tutorials: 'tutorials.md'
-      - Spatial R: spatial_r.md
-      - Species distribution modelling: sdm.md
-      - Google Earth Engine: gee.md
-      - Other resources: resources.md
+      # - Spatial R: spatial_r.md
+      # - Species distribution modelling: sdm.md
+      # - Google Earth Engine: gee.md
+      # - Other resources: resources.md
+      - Spatial R: spatial_r/index.md
+      - Species Distribution Modelling: sdm/index.md
+      - Google Earth Engine: gee/index.md
+      - Other Resources: resources/index.md
   # - Spatial R: 'spatial_r.md'
   # - Species Distribution Modelling: 'sdm.md'
   # - Google Earth Engine: 'gee.md'
