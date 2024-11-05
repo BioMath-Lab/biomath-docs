@@ -1,4 +1,5 @@
 # Google Earth Engine
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
 ## Google Earth Engine for ecological modelling
 ## Practical 1: Getting started with Google Earth Engine

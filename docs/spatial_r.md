@@ -1,4 +1,5 @@
 # Spatial Data in R
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
 ## An introduction to spatial data in R
 ### Useful online resources
