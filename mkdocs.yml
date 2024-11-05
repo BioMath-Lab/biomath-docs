@@ -13,9 +13,9 @@ nav:
       - Species distribution modelling: 'sdm.md'
       - Google Earth Engine: 'gee.md'
       - Other resources: 'resources.md'
-  - Dissimilarity Cubes: 'dissimilarity-cube.md'
-  - Invasibility Cubes: 'invasibility-cube.md'
-  - Impact Indicators: 'impact-indicators.md'
+  # - Dissimilarity Cubes: 'dissimilarity-cube.md'
+  # - Invasibility Cubes: 'invasibility-cube.md'
+  # - Impact Indicators: 'impact-indicators.md'
 
 # nav:
 #   - Home: 'index.md'
