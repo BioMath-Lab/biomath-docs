@@ -17,9 +17,9 @@ jobs:
       # - uses: actions/cache@v2
       - uses: actions/cache@v3  # Updated to v3
         with:
-          # key: ${{ github.ref }}
+          key: ${{ github.ref }}
           # path: .cache
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          # key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           path: ~/.cache/pip  # Updated cache path for Python dependencies
       - run: pip install mkdocs-material
       - run: pip install pillow cairosvg
