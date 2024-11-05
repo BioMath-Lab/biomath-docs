@@ -4,6 +4,6 @@ authors:
 - family-names: "MacFadyen"
   given-names: "Sandra"
   orcid: "https://orcid.org/0000-0002-5316-440X"
-title: "biomath-docs"
+title: "basic_doc"
 version: 1.0.0
-url: "https://github.com/biomath-lab/biomath-docs"
+url: "https://biomath-lab.github.io/basic_doc"

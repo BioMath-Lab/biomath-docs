@@ -1,5 +1,6 @@
 ![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
-# ![biomath](docs/assets/logo.png)
+# ![biomath](assets/logo_all.png)
+
 # Mathematical Bioscience Lab
 Our lab is a multidisciplinary research team at the interface of mathematics and biology/life sciences. As part of the Department of Mathematical Sciences at Stellenbosch University in South Africa, we are a dynamic research group led by Prof Cang Hui, a SARChI Chair in Mathematical and Theoretical Physical Biosciences. Our interests lie in proposing models and theories for explaining emerging patterns in ecology. Ecology studies biodiversity in its variety and complexity. As ecological processes are highly complex and adaptive, we rely on the simplicity of mathematical language to build models and theoretical frameworks.
 
@@ -10,15 +11,11 @@ Welcome to the Mathematical Biosciences (BioMath) GitHub repository, a dedicated
 
   - [**Sandra MacFadyen**](https://www0.sun.ac.za/biomath/pf/sandra-macfadyen/)
 
-See also the list of
-[contributors](working.md)
-who participated in this project.
+See also the list of [contributors](working.md) who participated in this project.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE.md)
-MIT License - see the [LICENSE.md](LICENSE.md) file for
-details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 

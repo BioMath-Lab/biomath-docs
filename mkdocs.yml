@@ -1,48 +1,23 @@
-site_name: BioMath Documents and Tutorials
-site_url: https://biomath-lab.github.io/biomath-docs/
+site_name: BioMath Basic Docs Template
+site_url: https://biomath-lab.github.io/basic_doc/
 # logo: assets/favicon.ico
 favicon: assets/favicon.ico
 
-extra_css:
-  - 'extra.css'
-
 nav:
-  - Home: 'index.md'
-  - About: 'about.md'
-  - Projects: 
-      # - 'projects.md'
-      - Science-i: 'science-i.md'
-  - Tutorials: 
-      # - 'tutorials.md'
-      - Spatial R: 'spatial_r.md'
-      - Species distribution modelling: 'sdm.md'
-      - Google Earth Engine: 'gee.md'
-      - Other resources: 'resources.md'
-  - Dissimilarity Cubes: 'dissimilarity-cube.md'
-  - Invasibility Cubes: 'invasibility-cube.md'
-  - Impact Indicators: 'impact-indicators.md'
-
-# nav:
-#   - Home: 'index.md'
-#   - 'User Guide':
-#     - 'Writing your docs': 'writing-your-docs.md'
-#     - 'Styling your docs': 'styling-your-docs.md'
-#   - About:
-#     - 'License': 'license.md'
-#     - 'Release Notes': 'release-notes.md'
+  - Home: 'pages/index.md'
+  - About: 'pages/about.md'
+  - Dissimilarity Cubes: 'pages/dissimilarity-cube.md'
+  - Invasibility Cubes: 'pages/invasibility-cube.md'
+  - Impact Indicators: 'pages/impact-indicators.md'
 
 theme:
   name: material
-  # logo: assets/b3_logo.png#su_v1
-  logo: assets/su_w2.png
+  logo: assets/logo_sun.png
   nav_style: tabs
   nav:
     hide: true  # If available, this option might hide duplicates
   features:
-    # - navigation.instant
-    # - navigation.instant.preview
     - navigation.tabs
-    # - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.path
@@ -70,14 +45,10 @@ theme:
       primary: teal
       accent: lime
       
-# plugins:
-#   - social
-
 extra:
-  - stylesheets/extra.css
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/BioMath-Lab/biomath-docs
+      link: https://github.com/BioMath-Lab/basic_doc
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/xxxx
     - icon: fontawesome/brands/linkedin
@@ -98,4 +69,4 @@ markdown_extensions:
   - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg 
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
