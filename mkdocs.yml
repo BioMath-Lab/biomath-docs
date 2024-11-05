@@ -3,6 +3,9 @@ site_url: https://biomath-lab.github.io/biomath-docs/
 # logo: assets/favicon.ico
 favicon: assets/favicon.ico
 
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Home: 'index.md'
   - About: 'about.md'
@@ -33,6 +36,8 @@ theme:
   # logo: assets/b3_logo.png#su_v1
   logo: assets/su_w2.png
   nav_style: tabs
+  nav:
+    hide: true  # If available, this option might hide duplicates
   features:
     # - navigation.instant
     # - navigation.instant.preview

@@ -1,0 +1,39 @@
+/* Style for level 1 headings (e.g., H1) */
+h1 {
+    background-color: #d4edda; /* Light green */
+    padding: 10px;
+    border-left: 4px solid #28a745; /* Darker green bar */
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: #000;
+}
+
+/* Style for level 2 headings (e.g., H2) */
+h2 {
+    background-color: #d1ecf1; /* Light blue */
+    padding: 8px;
+    border-left: 4px solid #17a2b8; /* Darker blue bar */
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: #000;
+}
+
+/* Style for level 3 headings (e.g., H3) */
+h3 {
+    background-color: #fff3cd; /* Light yellow */
+    padding: 6px;
+    border-left: 4px solid #ffc107; /* Darker yellow bar */
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: #000;
+}
+
+/* Optional: add additional styles for level 4+ headings */
+h4 {
+    background-color: #f8d7da; /* Light red */
+    padding: 4px;
+    border-left: 4px solid #dc3545; /* Darker red bar */
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: #000;
+}
