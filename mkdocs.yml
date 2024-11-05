@@ -4,7 +4,7 @@ site_url: https://biomath-lab.github.io/biomath-docs/
 favicon: assets/favicon.ico
 
 extra_css:
-  - extra.css
+  - 'extra.css'
 
 nav:
   - Home: 'index.md'
