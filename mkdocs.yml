@@ -33,6 +33,8 @@ theme:
   # logo: assets/b3_logo.png#su_v1
   logo: assets/su_w2.png
   nav_style: tabs
+  nav:
+    hide: true  # If available, this option might hide duplicates
   features:
     # - navigation.instant
     # - navigation.instant.preview
