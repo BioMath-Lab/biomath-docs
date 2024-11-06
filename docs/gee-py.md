@@ -1,28 +1,15 @@
 # Google Earth Engine
 ![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
-## Google Earth Engine for ecological modelling
+## Getting started with Google Earth Engine
+
 The application of satellite derived datasets and geospatial analysis techniques in the fields of ecology and conservation has grown substantially over the last decade. With the emergence of cloud-based computing platforms that facilitate big data analysis, researchers, resource managers and remote sensing enthusiasts are now able to interrogate petabyte-scale datasets with ease.  
 
 Google Earth Engine (GEE) is a cloud-based computing platform which uses JavaScript commands to access and analyse planetary-scale geospatial datasets drawn from a variety of platforms. Through an internet-accessible application programming interface (API) and associated web-based interactive development environment (IDE), Google Earth Engine users are able to mine a massive collection of geospatial data for change detection, resource qualification and trend mapping on the Earth's surface like never before. The capacity of GEE to analyse remotely sensed data holds enormous potential for conservation planning and resource management.  
 
 This course aims to train students, researchers and practitioners in the application of Google Earth Engine in conservation science. Specifically, it seeks to familiarize participants with the basic operation of the GEE environment, focusing on visualization, analysis and automated detection of biological patterns and processes. 
+
 The course will begin with a brief review of the fundamental theory behind remote sensing and geospatial analyses, followed by a series of tutorials.
-
-- [Prac1: Getting started](gee_prac1.md)
-- [Prac2: Spectral indices]
-- [Prac3: Time series-NDVI]
-- [Prac4: Interactive App]
-- [Prac5: Species patterns]
-- [Prac6: Landcover class]
-- [Prac7: Time series-Fire]
-- [Prac8: Change analysis]
-
-## Practical 1: Getting started with Google Earth Engine
-Basic JavaScript rules, create, import, explore and visualising datasets
-by Sandra MacFadyen @ [https://www0.sun.ac.za/biomath/](https://www0.sun.ac.za/biomath)
-
-Access the completed practical script [here](https://code.earthengine.google.com/76ed4ea4c97a064555880dcf09f93f5f)
 
 ### Learning Objectives
 By the end of this practical you should be able to:
@@ -37,7 +24,8 @@ By the end of this practical you should be able to:
 ### Access your code editor
 The first step is to access the GEE code editor. 
 This can be done from the earth engine [home page](https://earthengine.google.com/) by going to platform –> Code Editor. 
-Alternatively, you can access it directly from [https://code.earthengine.google.com/](https://code.earthengine.google.com)
+Alternatively, you can access it directly from [https://code.earthengine.google.com/](https://code.earthengine.google.com)   
+Access the completed practical script [here](https://code.earthengine.google.com/76ed4ea4c97a064555880dcf09f93f5f)
 
 ![gee_screenshot1](assets/gee_1_1.png)
 Take a look at the <a href=" https://developers.google.com/earth-engine/guides/playground">Google Earth Engine >> Guides >> Earth Engine Code Editor</a> section for a nice description of different panels and tabs.

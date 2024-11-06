@@ -1,48 +1,26 @@
 site_name: BioMath Documents and Tutorials
 site_url: https://biomath-lab.github.io/biomath-docs/
-# logo: assets/favicon.ico
-favicon: assets/favicon.ico
-
-extra_css:
-  - 'extra.css'
 
 nav:
   - Home: 'index.md'
   - About: 'about.md'
   - Projects: 
-      # - 'projects.md'
       - Science-i: 'science-i.md'
   - Tutorials: 
-      # - 'tutorials.md'
-      - Spatial R: 'spatial_r.md'
-      - Species distribution modelling: 'sdm.md'
-      - Google Earth Engine: 'gee.md'
+      - Spatial R: 'spatial-r.md'
+      - Species distribution modelling: 'sdm-r.md'
+      - Google Earth Engine: 'gee-py.md'
       - Other resources: 'resources.md'
   - Dissimilarity Cubes: 'dissimilarity-cube.md'
   - Invasibility Cubes: 'invasibility-cube.md'
   - Impact Indicators: 'impact-indicators.md'
 
-# nav:
-#   - Home: 'index.md'
-#   - 'User Guide':
-#     - 'Writing your docs': 'writing-your-docs.md'
-#     - 'Styling your docs': 'styling-your-docs.md'
-#   - About:
-#     - 'License': 'license.md'
-#     - 'Release Notes': 'release-notes.md'
-
 theme:
   name: material
-  # logo: assets/b3_logo.png#su_v1
   logo: assets/su_w2.png
   nav_style: tabs
-  nav:
-    hide: true  # If available, this option might hide duplicates
   features:
-    # - navigation.instant
-    # - navigation.instant.preview
     - navigation.tabs
-    # - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.path
@@ -70,11 +48,8 @@ theme:
       primary: teal
       accent: lime
       
-# plugins:
-#   - social
-
 extra:
-  - stylesheets/extra.css
+  favicon: assets/favicon.ico
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/BioMath-Lab/biomath-docs
