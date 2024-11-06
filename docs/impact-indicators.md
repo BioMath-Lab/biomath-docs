@@ -1,5 +1,5 @@
 # Impact indicators
-<!-- ![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg) -->
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
 <!-- {:.alert .alert-warning}
 This page is not yet complete. -->
@@ -26,11 +26,11 @@ The impact of invasive alien species is recognised as one of the leading drivers
   - Sandra MacFadyen
   - Pietro Landi
 
-See also the list of [contributors](pages/working.md) who participated in this project.
+See also the list of [contributors](working.md) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the [MIT License](LICENSE.md) MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
