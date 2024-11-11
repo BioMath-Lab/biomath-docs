@@ -45,13 +45,14 @@ Automate access and preprocessing of species occurrence data from sources such a
 `get_species`: Fetches and formats species occurrence data from various sources (e.g., local databases, GBIF), creating presence-absence or abundance matrices.  
 
 
-Table x: Expected structure of species occurrence records in short format data.frame.  
+Table x: Expected structure of species occurrence records in short format data frame.
 
 | site_id | x (longitude) | y (latitude) | sp_name (species) | pa (presence/absence) | abund (abundance) |
 |---------|---------------|--------------|-------------------|-----------------------|-------------------|
-| 1.0     | 1.0           | 1.0          | 1.0               | 1.0                   | 1.0               |
-| 1.0     | 1.0           | 1.0          | 1.0               | 1.0                   | 1.0               |
-| 1.0     | 1.0           | 1.0          | 1.0               | 1.0                   | 1.0               |
+| 1.0     | 1.0           | 1.0          | Species A         | 1                     | 5                 |
+| 2.0     | 1.0           | 1.0          | Species B         | 0                     | 0                 |
+| 3.0     | 1.0           | 1.0          | Species C         | 1                     | 2                 |
+
 
 
 Table x: Expected structure of species occurrence records in long format data.frame.  
