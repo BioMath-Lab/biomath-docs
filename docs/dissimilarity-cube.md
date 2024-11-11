@@ -39,29 +39,30 @@ Objective: Automate access and preparation of species and environmental data to 
 
 #### Species Occurrence Records  
 Data will be obtained from i) local sources; ii) Global Biodiversity Information Facility (GBIF); iii) [species occurrence cubes from B3](https://docs.b-cubed.eu/occurrence-cube/specification/).
- 
+
 Automate access and preprocessing of species occurrence data from sources such as local databases, the Global Biodiversity Information Facility (GBIF), and species occurrence cubes. This involves assembling data on species distributions across specified taxonomic groups and regions, resulting in matrices that quantify species co-occurrence within locations.
 
 `get_species`: Fetches and formats species occurrence data from various sources (e.g., local databases, GBIF), creating presence-absence or abundance matrices.  
 
+---
 
-Table x: Expected structure of species occurrence records in long format data frame.
+**Table x: Expected structure of species occurrence records in short format data frame.**
+
+| site_id | x (longitude) | y (latitude) | sp_name (species) | pa (presence/absence) | abund (abundance) |
+|---------|---------------|--------------|-------------------|-----------------------|-------------------|
+| 1.0     | 1.0           | 1.0          | Species A         | 1                     | 5                 |
+| 2.0     | 1.0           | 1.0          | Species B         | 0                     | 0                 |
+| 3.0     | 1.0           | 1.0          | Species C         | 1                     | 2                 |
+
+---
+
+**Table x: Expected structure of species occurrence records in long format data frame.**
 
 | site_id | x (longitude) | y (latitude) | sp_1 (pa/abund) | sp_2 (pa/abund) | sp_3 (pa/abund) | sp_4 (pa/abund) |
 |---------|---------------|--------------|-----------------|-----------------|-----------------|-----------------|
 | Row 1   | 1.0           | 1.0          | 1.0             | 1.0             | 1.0             | 1.0             |
 | Row 2   | 1.0           | 1.0          | 1.0             | 1.0             | 1.0             | 1.0             |
 | Row 3   | 1.0           | 1.0          | 1.0             | 1.0             | 1.0             | 1.0             |
-
-
-Table x: Expected structure of species occurrence records in long format data.frame.  
-
-| site_id | x (longitude) | y (latitude) | sp_1 (pa/abund) | sp_2 (pa/abund) | sp_3 (pa/abund) | sp_4 (pa/abund) |
-|---------|---------------|--------------|-----------------|-----------------|-----------------|-----------------|
-| Row 1   | 1.0           | 1.0          | 1.0             | 1.0             | 1.0             | 1.0             |
-| Row 2   | 1.0           | 1.0          | 1.0             | 1.0             | 1.0             | 1.0             |
-| Row 3   | 1.0           | 1.0          | 1.0             | 1.0             | 1.0             | 1.0             |
-
 
 #### Environmental Data  
 Environmental data are sourced from i) local sources, ii) [WorldClim](https://ouicodedata.com/posts/worldclim-with-r/) using `geodata`, iii) [CHELSA](https://onlinelibrary.wiley.com/doi/full/10.1111/jvs.13215?msockid=110b07b8df4767290225134fde4766f6) using [`climenv`](https://chelsa-climate.org/), and iv) additional [biodiversity data](https://mapme-initiative.github.io/mapme.biodiversity/index.html) using `mapme.biodiversity`.
