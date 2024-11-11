@@ -38,13 +38,15 @@ This section focuses on automating the retrieval and pre-processing of core data
 Objective: Automate access and preparation of species and environmental data to support downstream biodiversity assessments.
 
 #### Species Occurrence Records  
-Data will be obtained from i) local sources; ii) Global Biodiversity Information Facility (GBIF); iii) species occurrence cubes from B3 (https://docs.b-cubed.eu/occurrence-cube/specification/).
+Data will be obtained from i) local sources; ii) Global Biodiversity Information Facility (GBIF); iii) [species occurrence cubes from B3](https://docs.b-cubed.eu/occurrence-cube/specification/).
  
 Automate access and preprocessing of species occurrence data from sources such as local databases, the Global Biodiversity Information Facility (GBIF), and species occurrence cubes. This involves assembling data on species distributions across specified taxonomic groups and regions, resulting in matrices that quantify species co-occurrence within locations.
 
-`get_species`: Fetches and formats species occurrence data from various sources (e.g., local databases, GBIF), creating presence-absence or abundance matrices.
+`get_species`: Fetches and formats species occurrence data from various sources (e.g., local databases, GBIF), creating presence-absence or abundance matrices.  
+
 
 Table x: Expected structure of species occurrence records in short format data.frame.  
+
 | site_id | x (longitude) | y (latitude) | sp_name (species) | pa (presence/absence) | abund (abundance) |
 |---------|---------------|--------------|-------------------|-----------------------|-------------------|
 | 1.0     | 1.0           | 1.0          | 1.0               | 1.0                   | 1.0               |
@@ -53,6 +55,7 @@ Table x: Expected structure of species occurrence records in short format data.f
 
 
 Table x: Expected structure of species occurrence records in long format data.frame.  
+
 | site_id | x (longitude) | y (latitude) | sp_1 (pa/abund) | sp_2 (pa/abund) | sp_3 (pa/abund) | sp_4 (pa/abund) |
 |---------|---------------|--------------|-----------------|-----------------|-----------------|-----------------|
 | Row 1   | 1.0           | 1.0          | 1.0             | 1.0             | 1.0             | 1.0             |
@@ -70,13 +73,15 @@ Automate access and preprocessing of environmental data using diverse sources (e
 #### Data Formatting  
 Organizes the prepared data into structured data frames for easy access during analysis.
 
-`format_df`: Organizes the prepared data into structured data frames for easy access during analysis:
+`format_df`: Organizes the prepared data into structured data frames for easy access during analysis:  
+
 - **site_xy**: Holds spatial coordinates of sampled sites.
 - **site_sp**: Site-by-species matrix for biodiversity assessments.
 - **site_env**: Site-by-environment matrix linking species and environmental data.
 
 
 Table x: Output structure of site_xy, which holds spatial coordinates of sampled sites structure of species occurrence records in long format data.frame.  
+
 | site_id | x (longitude) | y (latitude) |
 |---------|---------------|--------------|
 | Row 1   | 1.0           | 1.0          |
@@ -84,7 +89,8 @@ Table x: Output structure of site_xy, which holds spatial coordinates of sampled
 | Row 3   | 1.0           | 1.0          |
 
 
-Table x: Output structure of site_sp, the site-by-species matrix used for biodiversity assessments.  
+Table x: Output structure of site_sp, the site-by-species matrix used for biodiversity assessments.   
+
 | site_id | sp_1 (pa/abund) | sp_2 (pa/abund) | sp_3 (pa/abund) | sp_4 (pa/abund) | sp_... (pa/abund) |
 |---------|-----------------|-----------------|-----------------|-----------------|-------------------|
 | Row 1   | 1.0             | 1.0             |                 | 1.0             | 1.0               |
@@ -108,7 +114,8 @@ Objective: Quantify co-occurrence and compositional differences across locations
 Quantify co-occurrence patterns to assess the frequency with which species are found together across the landscape. This will yield a co-occurrence matrix and a raster layer illustrating spatial patterns in species associations.
 Quantify compositional dissimilarity to identify spatial variation in species composition across different locations. This analysis will produce dissimilarity matrices and spatially explicit rasters visualizing biodiversity turnover across the study area.
 
-`calc_cooc`: Computes co-occurrence matrices and rasters to capture how often different species are found together, providing a foundation for analysing species associations.
+`calc_cooc`: Computes co-occurrence matrices and rasters to capture how often different species are found together, providing a foundation for analysing species associations.  
+
 `calc_dissim`: Calculates dissimilarity metrics to measure variations in species composition and environmental properties across sites, highlighting areas of compositional turnover.
 
 
@@ -126,7 +133,8 @@ Objective: Model dissimilarity to understand factors driving compositional turno
 Model dissimilarity as a function of geographic distance and environmental conditions using MS-GDM, with dissimilarity values as the response variable and environmental layers as predictors. Model outputs will include coefficient estimates, standard errors, p-values, and R² values, enhancing our understanding of biodiversity patterns.
 Predict future changes in species composition by extrapolating from MS-GDM results under projected environmental conditions (e.g., climate scenarios from CMIP5 or CMIP6). Later this will identify regions vulnerable to shifts in biodiversity and delineate areas where bioregion boundaries may alter in response to environmental change, offering a spatial forecast of biodiversity dynamics under future scenarios.
 
-`model_dissim`: Uses a Multiscale Generalized Dissimilarity Model (MS-GDM) to relate compositional dissimilarity with geographic and environmental factors, providing coefficient estimates and model diagnostics.
+`model_dissim`: Uses a Multiscale Generalized Dissimilarity Model (MS-GDM) to relate compositional dissimilarity with geographic and environmental factors, providing coefficient estimates and model diagnostics.  
+
 `predict_dissim`: Projects future compositional dissimilarities using MS-GDM results and future environmental scenarios to predict biodiversity changes under changing conditions.
 
 
