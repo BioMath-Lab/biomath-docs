@@ -74,14 +74,15 @@ Automate access and preprocessing of environmental data using diverse sources (e
 #### Data Formatting  
 Organizes the prepared data into structured data frames for easy access during analysis.
 
-`format_df`: Organizes the prepared data into structured data frames for easy access during analysis:  
+`format_df`: Organizes the prepared data into structured data frames for easy access during analysis:
 
 - **site_xy**: Holds spatial coordinates of sampled sites.
 - **site_sp**: Site-by-species matrix for biodiversity assessments.
 - **site_env**: Site-by-environment matrix linking species and environmental data.
 
+---
 
-Table x: Output structure of site_xy, which holds spatial coordinates of sampled sites structure of species occurrence records in long format data.frame.  
+**Table x: Output structure of `site_xy`, which holds spatial coordinates of sampled sites.**
 
 | site_id | x (longitude) | y (latitude) |
 |---------|---------------|--------------|
@@ -89,8 +90,9 @@ Table x: Output structure of site_xy, which holds spatial coordinates of sampled
 | Row 2   | 1.0           | 1.0          |
 | Row 3   | 1.0           | 1.0          |
 
+---
 
-Table x: Output structure of site_sp, the site-by-species matrix used for biodiversity assessments.   
+**Table x: Output structure of `site_sp`, the site-by-species matrix used for biodiversity assessments.**
 
 | site_id | sp_1 (pa/abund) | sp_2 (pa/abund) | sp_3 (pa/abund) | sp_4 (pa/abund) | sp_... (pa/abund) |
 |---------|-----------------|-----------------|-----------------|-----------------|-------------------|
@@ -98,10 +100,10 @@ Table x: Output structure of site_sp, the site-by-species matrix used for biodiv
 | Row 2   | 1.0             | 1.0             |                 | 1.0             | 1.0               |
 | Row 3   | 1.0             | 1.0             |                 | 1.0             | 1.0               |
 
+---
 
+**Table x: Output structure of `site_env`, the site-by-environment matrix linking species and environmental data.**
 
-
-Table x: Output structure of site_env, the site-by-environment matrix linking species and environmental data.  
 | site_id | enviro_1 (variable) | enviro_2 (variable) | enviro_3 (variable) | enviro_4 (variable) |
 |---------|---------------------|---------------------|---------------------|---------------------|
 | Row 1   | 1.0                 | 1.0                 |                     | 1.0                 |
