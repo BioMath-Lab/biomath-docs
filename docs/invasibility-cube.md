@@ -83,9 +83,9 @@ Organizes the prepared data into structured data frames for easy access during a
 
 | site_id | x (longitude) | y (latitude) |
 |---------|---------------|--------------|
-| Row 1   | 1.0           | 1.0          |
-| Row 2   | 1.0           | 1.0          |
-| Row 3   | 1.0           | 1.0          |
+| Site_1  | 31.50         | -24.20       |
+| Site_2  | 31.51         | -24.21       |
+| Site_3  | 31.52         | -24.22       |
 
 ---
 
@@ -93,9 +93,9 @@ Organizes the prepared data into structured data frames for easy access during a
 
 | site_id | sp_1 (pa/abund) | sp_2 (pa/abund) | sp_3 (pa/abund) | sp_4 (pa/abund) | sp_... (pa/abund) |
 |---------|-----------------|-----------------|-----------------|-----------------|-------------------|
-| Row 1   | 1.0             | 1.0             | 1.0             | 1.0             | 1.0               |
-| Row 2   | 1.0             | 1.0             | 1.0             | 1.0             | 1.0               |
-| Row 3   | 1.0             | 1.0             | 1.0             | 1.0             | 1.0               |
+| Site_1  | 1.0             | 1.0             | 1.0             | 1.0             | 1.0               |
+| Site_2  | 1.0             | 1.0             | 1.0             | 1.0             | 1.0               |
+| Site_3  | 1.0             | 1.0             | 1.0             | 1.0             | 1.0               |
 
 ---
 
@@ -103,9 +103,9 @@ Organizes the prepared data into structured data frames for easy access during a
 
 | site_id | enviro_1 (variable) | enviro_2 (variable) | enviro_3 (variable) | enviro_4 (variable) |
 |---------|---------------------|---------------------|---------------------|---------------------|
-| Row 1   | 1.0                 | 1.0                 | 1.0                 | 1.0                 |
-| Row 2   | 1.0                 | 1.0                 | 1.0                 | 1.0                 |
-| Row 3   | 1.0                 | 1.0                 | 1.0                 | 1.0                 |
+| Site_1  | 1.0                 | 1.0                 | 1.0                 | 1.0                 |
+| Site_2  | 1.0                 | 1.0                 | 1.0                 | 1.0                 |
+| Site_3  | 1.0                 | 1.0                 | 1.0                 | 1.0                 |
 
 ---
 
@@ -113,9 +113,9 @@ Organizes the prepared data into structured data frames for easy access during a
 
 | site_id | trait_1 (sp trait) | trait_2 (sp trait) | trait_3 (sp trait) | trait_4 (sp trait) |
 |---------|--------------------|--------------------|--------------------|--------------------|
-| Row 1   | 1.0                | 1.0                | 1.0                | 1.0                |
-| Row 2   | 1.0                | 1.0                | 1.0                | 1.0                |
-| Row 3   | 1.0                | 1.0                | 10.0               | 1.0                |
+| Site_1  | 1.0                | 1.0                | 1.0                | 1.0                |
+| Site_2  | 1.0                | 1.0                | 1.0                | 1.0                |
+| Site_3  | 1.0                | 1.0                | 10.0               | 1.0                |
 
 ### Community Trait Profiles  
 In progress...
