@@ -73,7 +73,7 @@ Organizes the prepared data into structured data frames for easy access during a
 `format_df`: Organizes the prepared data into structured data frames for easy access during analysis:
 
 - **site_xy**: Holds spatial coordinates of sampled sites.
-- **site_sp**: Species-specific trait data essential for understanding how species traits influence interactions.
+- **site_sp**: Site-by-species matrix for biodiversity assessments.
 - **site_env**: Site-specific environmental data provides contextual information about the conditions at each study location.
 - **sp_trait**: Species-specific trait data essential for understanding how species traits influence interactions.
 
