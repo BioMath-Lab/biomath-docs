@@ -1,0 +1,1219 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://biomath-lab.github.io/biomath-docs/dissimilarity-cube/">
+      
+      
+        <link rel="prev" href="../resources/">
+      
+      
+        <link rel="next" href="../invasibility-cube/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+    
+    
+      
+        <title>Dissimilarity Cubes - BioMath Documents and Tutorials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dissimilarity-cube" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="BioMath Documents and Tutorials" class="md-header__button md-logo" aria-label="BioMath Documents and Tutorials" data-md-component="logo">
+      
+  <img src="../assets/su_w2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BioMath Documents and Tutorials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dissimilarity Cubes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../science-i/" class="md-tabs__link">
+          
+  
+    
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../spatial-r/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Dissimilarity Cubes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../invasibility-cube/" class="md-tabs__link">
+        
+  
+    
+  
+  Invasibility Cubes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../impact-indicators/" class="md-tabs__link">
+        
+  
+    
+  
+  Impact Indicators
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="BioMath Documents and Tutorials" class="md-nav__button md-logo" aria-label="BioMath Documents and Tutorials" data-md-component="logo">
+      
+  <img src="../assets/su_w2.png" alt="logo">
+
+    </a>
+    BioMath Documents and Tutorials
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../science-i/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../spatial-r/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Dissimilarity Cubes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Dissimilarity Cubes
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#specification-for-dissimilarity-cubes-and-their-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification for dissimilarity cubes and their production
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-42-dissimilarity-cube-lead-sun" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 4.2: Dissimilarity cube [Lead: SUN]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-access-and-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Access and Preparation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Access and Preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#species-occurrence-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Species Occurrence Records
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmental-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environmental Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Formatting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#species-co-occurrence-and-compositional-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Species Co-occurrence and Compositional Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bioregional-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bioregional Classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelling-and-predicting-compositional-turnover" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelling and Predicting Compositional Turnover
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bioregional-change-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bioregional Change Assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-availability-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Availability Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acknowledgements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invasibility-cube/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Invasibility Cubes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impact-indicators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impact Indicators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="dissimilarity-cube">Dissimilarity cube</h1>
+<p><img alt="example workflow" src="https://github.com/github/docs/actions/workflows/main.yml/badge.svg" /></p>
+<!-- {:.alert .alert-warning}
+This page is not yet complete. -->
+
+<h2 id="specification-for-dissimilarity-cubes-and-their-production">Specification for dissimilarity cubes and their production</h2>
+<p>This document presents the specification for “dissimilarity cubes”, to map compositional dissimilarity and turnover of species using occurrence data. It provides a workflow to compile co-occurrence matrices for species in a specified geographic area, source georeferenced environmental data, and map compositional dissimilarity using ‘MS-GDM' and 'zetadiv'.</p>
+<blockquote>
+<h2 id="task-42-dissimilarity-cube-lead-sun">Task 4.2: Dissimilarity cube [Lead: SUN]</h2>
+<p>Design workflows to compile a co-occurrence matrix for species in a geographic area, source georeferenced environmental data, and map compositional dissimilarity using ‘MS-GDM', 'zetadiv', and 'SSDM' R packages. This includes identifying bioregions and predicting future compositional turnover and bioregion shifts.</p>
+<blockquote>
+<ul>
+<li>Nov 2024: M13 – Code design: Map compositional dissimilarity &amp; turnover</li>
+<li>Apr 2025: M14 – Code test: Map compositional dissimilarity &amp; turnover</li>
+</ul>
+</blockquote>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>Biodiversity monitoring is fundamental in understanding and conserving ecological dynamics, particularly in the context of accelerating global change. Central to these efforts is the concept of dissimilarity, which quantifies the differences in species composition across spatial or temporal scales and provides critical insights into ecosystem diversity and structure. Dissimilarity, alongside traditional biodiversity metrics such as species richness (the number of unique species) and alpha diversity (local diversity within a habitat), as well as beta (diversity among habitats) and zeta diversity (higher-order diversity measures capturing shared species across multiple sites), is increasingly employed in conservation studies. Together, these metrics provide a comprehensive picture of biodiversity patterns and can elucidate the spatial turnover of species assemblages, helping to identify regions of high ecological uniqueness or vulnerability.</p>
+<p>Within this context, advanced modelling techniques like Generalized Dissimilarity Modelling (GDM) and its multi-site extension, Multi-Site Generalized Dissimilarity Modelling (MS-GDM), are powerful tools. GDM is a statistical framework that models compositional dissimilarity as a function of environmental and spatial gradients, effectively linking species turnover to ecological processes. MS-GDM expands upon this by incorporating multiple sites simultaneously, leveraging zeta diversity metrics to capture more complex spatial patterns and interactions across landscapes. <br />
+Species richness refers to the total number of unique species within a community or region.
+Alpha diversity captures within-site species diversity, while beta diversity measures differences in species composition between habitats or sites.
+Zeta diversity is an extension used in multi-site comparisons, which calculates species overlap across multiple locations, helping to capture patterns of similarity and dissimilarity in complex landscapes.</p>
+<p>Generalized Dissimilarity Modelling (GDM): GDM is a non-linear modelling approach for relating species turnover to spatial and environmental gradients, effectively capturing the complexity of species-environment relationships.
+Multi-Site Generalized Dissimilarity Modelling (MS-GDM): MS-GDM extends GDM for multi-site comparisons, particularly useful in understanding higher-order patterns of biodiversity through the incorporation of zeta diversity. This is some text.</p>
+<h2 id="objectives">Objectives</h2>
+<ul>
+<li>Streamline Data Access and Preparation: Address the need for efficient automation of species occurrence and environmental data processing, reducing the manual effort and potential inconsistencies in ecological data collection.</li>
+<li>Enhance Species Co-occurrence and Compositional Analysis: Provide novel methods for quantifying co-occurrence patterns and compositional dissimilarities, filling the gap in scalable, standardized tools for analysing species interactions and biodiversity composition.</li>
+<li>Advance Bioregional Classification and Spatial Mapping: Introduce a robust framework for classifying regions based on ecological similarity, offering improved tools for delineating bioregions and capturing landscape-scale biodiversity patterns.</li>
+<li>Innovate Modelling and Prediction of Compositional Turnover: Utilize advanced multiscale models to quantify and predict compositional changes, addressing a critical need for understanding the drivers of biodiversity turnover and their interactions with environmental gradients.</li>
+<li>Assess Bioregional Shifts and Biodiversity Change: Develop new approaches for evaluating and visualizing shifts in bioregion boundaries and compositional changes under future scenarios, providing essential insights for conservation planning and ecosystem management in a changing climate. </li>
+</ul>
+<h2 id="methods">Methods</h2>
+<p>Dissimilarity Workflow: The development of this R package aims to streamline and enhance biodiversity research by automating data access, pre-processing, and analysis, addressing key challenges faced in ecological studies. By integrating functions for species occurrence data retrieval, environmental data processing, co-occurrence analysis, and compositional turnover modelling, the package provides a comprehensive toolkit for exploring spatial patterns and ecological relationships. It is designed to be user-friendly, allowing researchers to quickly assess biodiversity metrics, classify bioregions, and model future changes under different environmental scenarios. Ultimately, this package supports efficient, repeatable, and scalable analyses, facilitating deeper insights into ecosystem dynamics and aiding conservation efforts in the face of global change.</p>
+<h3 id="data-access-and-preparation">Data Access and Preparation</h3>
+<p>This section focuses on automating the retrieval and pre-processing of core data, including species occurrence and environmental variables. These data form the basis for further ecological analysis and model building. 
+Objective: Automate access and preparation of species and environmental data to support downstream biodiversity assessments.</p>
+<h4 id="species-occurrence-records">Species Occurrence Records</h4>
+<p>Data will be obtained from i) local sources; ii) Global Biodiversity Information Facility (GBIF); iii) <a href="https://docs.b-cubed.eu/occurrence-cube/specification/">species occurrence cubes from B3</a>.</p>
+<p>Automate access and preprocessing of species occurrence data from sources such as local databases, the Global Biodiversity Information Facility (GBIF), and species occurrence cubes. This involves assembling data on species distributions across specified taxonomic groups and regions, resulting in matrices that quantify species co-occurrence within locations.</p>
+<p><code>get_species</code>: Fetches and formats species occurrence data from various sources (e.g., local databases, GBIF), creating presence-absence or abundance matrices.  </p>
+<p><img alt="dissim_1" src="../assets/dissim_1.png" width="600px" /></p>
+<hr />
+<p><strong>Table x: Expected structure of species occurrence records in short format data frame.</strong></p>
+<table>
+<thead>
+<tr>
+<th>site_id</th>
+<th>x (longitude)</th>
+<th>y (latitude)</th>
+<th>sp_name (species)</th>
+<th>pa (presence/absence)</th>
+<th>abund (abundance)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>30.0</td>
+<td>-20.0</td>
+<td>Pieris brassicae</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>31.0</td>
+<td>-21.0</td>
+<td>Eutricha capensis</td>
+<td>1</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>31.0</td>
+<td>-21.0</td>
+<td>Acraea horta</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>32.0</td>
+<td>-22.0</td>
+<td>Dixeia charina</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>32.0</td>
+<td>-22.0</td>
+<td>Pieris brassicae</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>32.0</td>
+<td>-22.0</td>
+<td>Acraea horta</td>
+<td>1</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Table x: Expected structure of species occurrence records in long format data frame.</strong></p>
+<table>
+<thead>
+<tr>
+<th>site_id</th>
+<th>x (longitude)</th>
+<th>y (latitude)</th>
+<th>sp_1 (pa/abund)</th>
+<th>sp_2 (pa/abund)</th>
+<th>sp_3 (pa/abund)</th>
+<th>sp_4 (pa/abund)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>30.0</td>
+<td>-20.0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>31.0</td>
+<td>-21.0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>32.0</td>
+<td>-22.0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="environmental-data">Environmental Data</h4>
+<p>Environmental data are sourced from i) local sources, ii) <a href="https://ouicodedata.com/posts/worldclim-with-r/">WorldClim</a> using <code>geodata</code>, iii) <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jvs.13215?msockid=110b07b8df4767290225134fde4766f6">CHELSA</a> using <a href="https://chelsa-climate.org/"><code>climenv</code></a>, iv) <a href="https://r-spatial.github.io/rgee/">Google Earth Engine</a> using <code>rgee</code>, and v) additional <a href="https://mapme-initiative.github.io/mapme.biodiversity/index.html">biodiversity data</a> using <code>mapme.biodiversity</code>.
+Automate access and preprocessing of environmental data using diverse sources (e.g., local records, WorldClim, CHELSA, GEE) to compile georeferenced environmental layers (e.g., climate, soil, topography) that are essential for understanding ecological drivers of species distributions.</p>
+<p><code>get_enviro</code>: Retrieves georeferenced environmental data (e.g., climate, soil) and clips it to the study area extent, making it compatible with species data.  </p>
+<p><img alt="dissim_1" src="../assets/dissim_2b.png" width="500px" /></p>
+<h4 id="data-formatting">Data Formatting</h4>
+<p>Organizes the prepared data into structured data frames for easy access during analysis.</p>
+<p><code>format_df</code>: Organizes the prepared data into structured data frames for easy access during analysis:</p>
+<ul>
+<li><strong>site_xy</strong>: Holds spatial coordinates of sampled sites.</li>
+<li><strong>site_sp</strong>: Site-by-species matrix for biodiversity assessments.</li>
+<li><strong>site_env</strong>: Site-by-environment matrix linking species and environmental data.</li>
+</ul>
+<hr />
+<p><strong>Table x: Output structure of <code>site_xy</code>, which holds spatial coordinates of sampled sites.</strong></p>
+<table>
+<thead>
+<tr>
+<th>site_id</th>
+<th>x (longitude)</th>
+<th>y (latitude)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>30.0</td>
+<td>-20.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>31.0</td>
+<td>-21.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>32.0</td>
+<td>-22.0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Table x: Output structure of <code>site_sp</code>, the site-by-species matrix used for biodiversity assessments.</strong></p>
+<table>
+<thead>
+<tr>
+<th>site_id</th>
+<th>sp_1 (pa/abund)</th>
+<th>sp_2 (pa/abund)</th>
+<th>sp_3 (pa/abund)</th>
+<th>sp_4 (pa/abund)</th>
+<th>sp_... (pa/abund)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Table x: Output structure of <code>site_env</code>, the site-by-environment matrix linking species and environmental data.</strong></p>
+<table>
+<thead>
+<tr>
+<th>site_id</th>
+<th>enviro_1 (variable)</th>
+<th>enviro_2 (variable)</th>
+<th>enviro_3 (variable)</th>
+<th>enviro_4 (variable)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>30</td>
+<td>0.123</td>
+<td>1</td>
+<td>1.45</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>0.812</td>
+<td>5</td>
+<td>8.82</td>
+</tr>
+<tr>
+<td>3</td>
+<td>10</td>
+<td>0.021</td>
+<td>4</td>
+<td>2.040</td>
+</tr>
+</tbody>
+</table>
+<h3 id="species-co-occurrence-and-compositional-analysis">Species Co-occurrence and Compositional Analysis</h3>
+<p>This section provides tools to quantify species co-occurrence patterns and compositional dissimilarities, enabling insights into species interactions and biodiversity composition across landscapes.
+Objective: Quantify co-occurrence and compositional differences across locations to identify patterns of biodiversity and species interactions.
+Quantify co-occurrence patterns to assess the frequency with which species are found together across the landscape. This will yield a co-occurrence matrix and a raster layer illustrating spatial patterns in species associations.
+Quantify compositional dissimilarity to identify spatial variation in species composition across different locations. This analysis will produce dissimilarity matrices and spatially explicit rasters visualizing biodiversity turnover across the study area.</p>
+<p><code>calc_cooc</code>: Computes co-occurrence matrices and rasters to capture how often different species are found together, providing a foundation for analysing species associations.  </p>
+<p><code>calc_dissim</code>: Calculates dissimilarity metrics to measure variations in species composition and environmental properties across sites, highlighting areas of compositional turnover.</p>
+<h3 id="bioregional-classification">Bioregional Classification</h3>
+<p>This section enables classification of landscapes into bioregions based on ecological and compositional similarities, helping identify areas that share common ecological traits.
+Objective: Classify regions based on compositional similarity to delineate bioregions, which reflect areas with unique ecological characteristics and species assemblages.
+Classify compositional similarities into unique bioregions by applying clustering algorithms to group locations with similar species compositions. The resulting bioregions offer insights into regions sharing similar ecological characteristics and species pools.</p>
+<p><code>map_bioreg</code>: Classifies the study area into distinct bioregions using clustering algorithms, with optional fuzzy clustering to assess stability across bioregion boundaries.</p>
+<h3 id="modelling-and-predicting-compositional-turnover">Modelling and Predicting Compositional Turnover</h3>
+<p>This section includes tools for modelling compositional turnover as a function of geographic distance and environmental gradients, as well as predicting future compositional changes under different environmental scenarios.
+Objective: Model dissimilarity to understand factors driving compositional turnover and predict future changes due to environmental drivers, such as climate change.
+Model dissimilarity as a function of geographic distance and environmental conditions using MS-GDM, with dissimilarity values as the response variable and environmental layers as predictors. Model outputs will include coefficient estimates, standard errors, p-values, and R² values, enhancing our understanding of biodiversity patterns.
+Predict future changes in species composition by extrapolating from MS-GDM results under projected environmental conditions (e.g., climate scenarios from CMIP5 or CMIP6). Later this will identify regions vulnerable to shifts in biodiversity and delineate areas where bioregion boundaries may alter in response to environmental change, offering a spatial forecast of biodiversity dynamics under future scenarios.</p>
+<p><code>model_dissim</code>: Uses a Multiscale Generalized Dissimilarity Model (MS-GDM) to relate compositional dissimilarity with geographic and environmental factors, providing coefficient estimates and model diagnostics.  </p>
+<p><code>predict_dissim</code>: Projects future compositional dissimilarities using MS-GDM results and future environmental scenarios to predict biodiversity changes under changing conditions.</p>
+<h3 id="bioregional-change-assessment">Bioregional Change Assessment</h3>
+<p>This section provides tools to assess changes in bioregions and biodiversity composition over time, comparing current and future scenarios to identify areas vulnerable to shifts in ecological assemblages.
+Objective: Assess landscape-level shifts in biodiversity and bioregions under future environmental change scenarios, identifying potential regions of ecological transformation.
+Classify predicted future compositional similarities (under projected environmental conditions, e.g., climate scenarios from CMIP5 or CMIP6) into new set of unique bioregions by applying clustering algorithms to group locations with similar species compositions. Assess differences.</p>
+<p><code>calc_dissimDiff</code>: Computes differences in dissimilarity metrics between current and future projections, visualizing expected shifts in biodiversity composition.
+<code>map_bioregDiff</code>: Maps changes in bioregion boundaries over time, highlighting regions likely to experience significant shifts, losses, or new bioregional formations under future conditions.</p>
+<h2 id="results">Results</h2>
+<p>In progress</p>
+<h2 id="discussion">Discussion</h2>
+<p>In progress</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In progress</p>
+<h2 id="data-availability-statement">Data Availability Statement</h2>
+<p>In progress</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<ul>
+<li><a href="https://nithecs.ac.za/">National Institute for Theoretical and Computational Sciences (NITheCS)</a></li>
+</ul>
+<h2 id="references">References</h2>
+<h2 id="license">License</h2>
+<p>This project is licensed under the <a href="../LICENSE/">MIT License</a> MIT License - see the <a href="../LICENSE/">LICENSE.md</a> file for details</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/BioMath-Lab/biomath-docs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/xxxx" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/xxxxx" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

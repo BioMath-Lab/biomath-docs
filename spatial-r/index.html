@@ -1,0 +1,1411 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://biomath-lab.github.io/biomath-docs/spatial-r/">
+      
+      
+        <link rel="prev" href="../science-i/">
+      
+      
+        <link rel="next" href="../sdm-r/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+    
+    
+      
+        <title>Spatial R - BioMath Documents and Tutorials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spatial-data-in-r" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="BioMath Documents and Tutorials" class="md-header__button md-logo" aria-label="BioMath Documents and Tutorials" data-md-component="logo">
+      
+  <img src="../assets/su_w2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BioMath Documents and Tutorials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Spatial R
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../science-i/" class="md-tabs__link">
+          
+  
+    
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../dissimilarity-cube/" class="md-tabs__link">
+        
+  
+    
+  
+  Dissimilarity Cubes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../invasibility-cube/" class="md-tabs__link">
+        
+  
+    
+  
+  Invasibility Cubes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../impact-indicators/" class="md-tabs__link">
+        
+  
+    
+  
+  Impact Indicators
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="BioMath Documents and Tutorials" class="md-nav__button md-logo" aria-label="BioMath Documents and Tutorials" data-md-component="logo">
+      
+  <img src="../assets/su_w2.png" alt="logo">
+
+    </a>
+    BioMath Documents and Tutorials
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../science-i/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Spatial R
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Spatial R
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#an-introduction-to-spatial-data-analysis-in-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      An Introduction to Spatial Data Analysis in R
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="An Introduction to Spatial Data Analysis in R">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#useful-online-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Useful online resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-your-working-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set your working directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives-of-this-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives of this tutorial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vector data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#points-lines-polygons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Points - Lines - Polygons
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-projections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding projections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-to-find-free-gis-data-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to find free GIS data layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-your-own-data-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add your own data layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-spdf-to-sf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convert SPDF to SF
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Convert SPDF to SF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#more-about-coordinate-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      More about coordinate systems
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save-vector-data-to-local-drive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Save vector data to local drive
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Save vector data to local drive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convert-center-points-and-then-write-to-local-drive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convert center points and then write to local drive
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raster-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raster data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Raster data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raster-data-stucture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raster Data Stucture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-the-coordinate-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup the coordinate systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-20km2-raster-based-on-the-extent-of-spdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a new 20km2 raster based on the extent of SPDF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save-raster-to-local-drive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Save raster to local drive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-data-and-extract-to-area-of-interest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get data and extract to area of interest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subsetting-and-spatial-cropping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsetting and spatial cropping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial aggregation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-raster-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extracting Raster Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bin-data-using-custom-breaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bin data using custom breaks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qgis-workshop-in-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      QGIS Workshop (in progress)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdm-r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Species distribution modelling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gee-py/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dissimilarity-cube/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dissimilarity Cubes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invasibility-cube/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Invasibility Cubes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impact-indicators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impact Indicators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="spatial-data-in-r">Spatial Data in R</h1>
+<p><img alt="example workflow" src="https://github.com/github/docs/actions/workflows/main.yml/badge.svg" /></p>
+<h2 id="an-introduction-to-spatial-data-analysis-in-r">An Introduction to Spatial Data Analysis in R</h2>
+<p>Spatial analysis is a cornerstone of conservation ecology, providing insights into biodiversity patterns, habitat suitability, and landscape connectivity, all crucial for effective conservation planning. By using spatial data, ecologists can visualise, quantify, and model species distributions and environmental changes across landscapes, aiding in habitat protection and management strategies.</p>
+<p>R offers a comprehensive suite of tools for spatial data manipulation, analysis, and visualisation, allowing researchers to seamlessly integrate, process, and analyse large datasets. In this tutorial, participants will learn to handle vector and raster data, project datasets, and perform essential geospatial transformations and analyses. Through practical exercises, users will gain the skills to harness R’s capabilities for ecological and conservation applications, laying the groundwork for more complex spatial analyses and modeling in conservation ecology.</p>
+<h3 id="useful-online-resources">Useful online resources</h3>
+<p><a href="https://mhweber.github.io/AWRA_2020_R_Spatial/index.html">Fundamentals of Spatial Analysis in R</a><br />
+<a href="https://rspatial.org/index.html">Spatial Data Science with R and <code>terra</code></a><br />
+<a href="https://www.ecologi.st/post/big-spatial-data/">Handling spatial data in R #3</a><br />
+<a href="https://r.geocompx.org/">Geocomputation with R</a><br />
+<a href="https://cengel.github.io/R-spatial/">Using Spatial Data with R</a>  </p>
+<h3 id="install-packages">Install packages</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;sf&#39;</span><span class="p">,</span><span class="s">&#39;terra&#39;</span><span class="p">,</span><span class="s">&#39;spData&#39;</span><span class="p">,</span><span class="s">&#39;sp&#39;</span><span class="p">,</span><span class="s">&#39;rgdal&#39;</span><span class="p">,</span><span class="s">&#39;raster&#39;</span><span class="p">,</span><span class="s">&#39;rasterVis&#39;</span><span class="p">))</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;spDataLarge&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;https://nowosad.r-universe.dev&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="load-packages">Load packages</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span><span class="w">           </span><span class="c1"># classes and functions for vector data</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">terra</span><span class="p">)</span><span class="w">        </span><span class="c1"># classes and functions for raster data</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nf">library</span><span class="p">(</span><span class="n">spData</span><span class="p">)</span><span class="w">       </span><span class="c1"># load geographic data</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nf">library</span><span class="p">(</span><span class="n">spDataLarge</span><span class="p">)</span><span class="w">  </span><span class="c1"># load larger geographic data</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nf">library</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nf">library</span><span class="p">(</span><span class="n">rgdal</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># library(tmap)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nf">library</span><span class="p">(</span><span class="n">rasterVis</span><span class="p">)</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nf">library</span><span class="p">(</span><span class="n">tmap</span><span class="p">)</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="set-your-working-directory">Set your working directory</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">#You will need to set your own working directory</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;D:/Students/VictoriaO&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># setwd(&#39;D:\\Students\\VictoriaO&#39;) #Same thing</span>
+</code></pre></div>
+<h3 id="objectives-of-this-tutorial">Objectives of this tutorial</h3>
+<ul>
+<li>Read in vector data using the sp and sf packages.</li>
+<li>Convert between the sp and sf data models.</li>
+<li>Define and transform datums and projections for vector data.</li>
+<li>Access and work with attribute data associated with vector features.</li>
+<li>Read in raster data using the raster package.</li>
+<li>Define and transform datums and projections for raster data.</li>
+</ul>
+<h3 id="vector-data">Vector data</h3>
+<h4 id="points-lines-polygons">Points - Lines - Polygons</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">class</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">world</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nf">names</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nf">head</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">world</span><span class="p">))</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nf">names</span><span class="p">(</span><span class="n">world</span><span class="p">[</span><span class="m">3</span><span class="o">:</span><span class="m">6</span><span class="p">])</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world</span><span class="p">[</span><span class="m">3</span><span class="o">:</span><span class="m">6</span><span class="p">])</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world</span><span class="p">[</span><span class="s">&quot;lifeExp&quot;</span><span class="p">])</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nf">summary</span><span class="p">(</span><span class="n">world</span><span class="p">[</span><span class="s">&quot;lifeExp&quot;</span><span class="p">])</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1">#Subset</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">(</span><span class="n">world_mini</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">world</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">])</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world_mini</span><span class="p">[</span><span class="s">&#39;name_long&#39;</span><span class="p">])</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="p">(</span><span class="n">world_africa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">world</span><span class="p">[</span><span class="n">world</span><span class="o">$</span><span class="n">continent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Africa&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world_africa</span><span class="p">)</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world_africa</span><span class="p">[</span><span class="s">&quot;lifeExp&quot;</span><span class="p">])</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world</span><span class="p">[</span><span class="s">&quot;pop&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world_africa</span><span class="p">[</span><span class="s">&quot;lifeExp&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="understanding-projections">Understanding projections</h4>
+<p>Read more from <a href="https://epsg.io/">epsg.io</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># EPSG:3395 is WGS 84 / World Mercator</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">world.tm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_transform</span><span class="p">(</span><span class="n">world</span><span class="p">,</span><span class="w"> </span><span class="m">3395</span><span class="p">)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">world.tm</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world.tm</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">#................................</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1">#Calculate areas</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">RSA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">world</span><span class="p">[</span><span class="n">world</span><span class="o">$</span><span class="n">name_long</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;South Africa&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nf">plot</span><span class="p">(</span><span class="n">RSA</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="nf">st_area</span><span class="p">(</span><span class="n">RSA</span><span class="p">)</span><span class="w"> </span><span class="c1"># requires the s2 package in recent versions of sf</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1">#&gt; 1.216401e+12 [m^2] # output is in units of square meters (m2)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="nf">st_area</span><span class="p">(</span><span class="n">RSA</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">1000000</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c1">#&gt; 1 216 401 [m^2] # square kilometres (km2)</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1"># units::set_units(st_area(RSA), km^2)</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="c1">#&gt; 1 216 401 [km^2] 1,221 million km² #https://en.wikipedia.org/wiki/South_Africa</span>
+</code></pre></div>
+<h4 id="where-to-find-free-gis-data-layers">Where to find free GIS data layers</h4>
+<p><a href="https://mapcruzin.com/free-south-africa-arcgis-maps-shapefiles.htm">https://mapcruzin.com/</a><br />
+<a href="https://data.humdata.org/dataset/cod-ab-zaf?">https://data.humdata.org/dataset/</a><br />
+<a href="https://africaopendata.org/group/south-africa?res_format=SHP">https://africaopendata.org/</a><br />
+<a href="https://egis.environment.gov.za/data_egis/data_download/current">https://egis.environment.gov.za/data_egis/</a><br />
+<a href="https://bgis.sanbi.org/SpatialDataset">https://bgis.sanbi.org/SpatialDataset</a><br />
+<a href="https://dataportal-mdb-sa.opendata.arcgis.com/">https://dataportal-mdb-sa.opendata.arcgis.com/</a><br />
+<a href="http://geoportal.icpac.net/layers/?limit=100&amp;offset=0">http://geoportal.icpac.net/</a>  </p>
+<h4 id="add-your-own-data-layers">Add your own data layers</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">#Create your own points</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">(</span><span class="n">pnts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">-79</span><span class="p">,</span><span class="w"> </span><span class="m">36</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-101</span><span class="p">,</span><span class="w"> </span><span class="m">41</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-80</span><span class="p">,</span><span class="w"> </span><span class="m">27</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-91</span><span class="p">,</span><span class="w"> </span><span class="m">52</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-68</span><span class="p">,</span><span class="w"> </span><span class="m">42</span><span class="p">)))</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">(</span><span class="n">pnts.sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">SpatialPoints</span><span class="p">(</span><span class="n">pnts</span><span class="p">))</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nf">summary</span><span class="p">(</span><span class="n">pnts.sp</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1">#Plot those on map produced in 116</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nf">plot</span><span class="p">(</span><span class="n">pnts.sp</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nf">plot</span><span class="p">(</span><span class="n">world_africa</span><span class="p">[</span><span class="s">&quot;lifeExp&quot;</span><span class="p">])</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="nf">plot</span><span class="p">(</span><span class="n">pnts.sp</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="o">=</span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1">#Don&#39;t forget to add a coordinate system</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nf">is.projected</span><span class="p">(</span><span class="n">pnts.sp</span><span class="p">)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nf">proj4string</span><span class="p">(</span><span class="n">pnts.sp</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="nf">CRS</span><span class="p">(</span><span class="s">&#39;+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nf">proj4string</span><span class="p">(</span><span class="n">pnts.sp</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="nf">CRS</span><span class="p">(</span><span class="s">&#39;+init=epsg:4326&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">#Different way to do same thing</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="nf">summary</span><span class="p">(</span><span class="n">pnts.sp</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">#Read in data (shapefiles) *Data from getData {raster} </span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">#Using rgdal</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">(</span><span class="n">rsa_country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readOGR</span><span class="p">(</span><span class="n">dsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;Data&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;gadm36_ZAF_0&#39;</span><span class="p">))</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_country</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">(</span><span class="n">rsa_provinces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readOGR</span><span class="p">(</span><span class="n">dsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;Data&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;gadm36_ZAF_1&#39;</span><span class="p">))</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_provinces</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">(</span><span class="n">rsa_district</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readOGR</span><span class="p">(</span><span class="n">dsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;Data&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;gadm36_ZAF_2&#39;</span><span class="p">))</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nf">head</span><span class="p">(</span><span class="n">rsa_district</span><span class="p">);</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_district</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_country</span><span class="p">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_provinces</span><span class="p">)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_district</span><span class="p">)</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1">#Using sf</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">(</span><span class="n">rsa_country_sf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_read</span><span class="p">(</span><span class="s">&#39;Data/gadm36_ZAF_0.shp&#39;</span><span class="p">))</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="p">(</span><span class="n">rsa_provinces_sf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_read</span><span class="p">(</span><span class="s">&#39;Data/gadm36_ZAF_1.shp&#39;</span><span class="p">))</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="p">(</span><span class="n">rsa_district_sf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_read</span><span class="p">(</span><span class="s">&#39;Data/gadm36_ZAF_2.shp&#39;</span><span class="p">))</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+</code></pre></div>
+<h4 id="convert-spdf-to-sf">Convert SPDF to SF</h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">#You will need to set your own working directory. </span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">rsa_country</span><span class="w"> </span><span class="c1">#SpatialPolygonsDataFrame</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">rsa_country_sf</span><span class="w"> </span><span class="c1">#Simple feature collection with 1 feature and 2 fields. Geometry type: MULTIPOLYGON</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">rsa_country_sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">readOGR</span><span class="p">(</span><span class="n">dsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;Data&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;gadm36_ZAF_0&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">rsa_country_sf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_read</span><span class="p">(</span><span class="s">&#39;Data/gadm36_ZAF_0.shp&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">(</span><span class="n">rsa_country_sp_from_sf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">,</span><span class="w"> </span><span class="n">Class</span><span class="o">=</span><span class="s">&#39;Spatial&#39;</span><span class="p">))</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">(</span><span class="n">rsa_country_sf_from_sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_as_sf</span><span class="p">(</span><span class="n">rsa_country_sp</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">#Read in table of coordinates and create points</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">wdpa.df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&#39;Data/WDPA_Africa.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nf">head</span><span class="p">(</span><span class="n">wdpa.df</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nf">str</span><span class="p">(</span><span class="n">wdpa.df</span><span class="p">)</span><span class="w"> </span><span class="c1">#&#39;data.frame&#39;: 2411 obs. of  19 variables:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nf">names</span><span class="p">(</span><span class="n">wdpa.df</span><span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p">(</span><span class="n">wdpa.sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">SpatialPointsDataFrame</span><span class="p">(</span><span class="n">wdpa.df</span><span class="p">[,</span><span class="m">3</span><span class="o">:</span><span class="m">4</span><span class="p">],</span><span class="w"> </span><span class="n">wdpa.df</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">16</span><span class="p">,</span><span class="m">19</span><span class="p">)],</span><span class="w"> </span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">                                  </span><span class="n">proj4string</span><span class="o">=</span><span class="nf">CRS</span><span class="p">(</span><span class="s">&#39;+init=epsg:4326&#39;</span><span class="p">)))</span><span class="w"> </span><span class="c1">#SpatialPointsDataFrame</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nf">plot</span><span class="p">(</span><span class="n">wdpa.sp</span><span class="p">)</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">wdpa.sf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_as_sf</span><span class="p">(</span><span class="n">wdpa.df</span><span class="p">,</span><span class="w"> </span><span class="n">coords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Longitude&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Latitude&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">crs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4326</span><span class="p">)</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">wdpa.sf</span><span class="w">  </span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="nf">plot</span><span class="p">(</span><span class="n">wdpa.sf</span><span class="p">[</span><span class="s">&#39;NAME&#39;</span><span class="p">])</span>
+</code></pre></div></p>
+<h5 id="more-about-coordinate-systems">More about coordinate systems</h5>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p">(</span><span class="n">proj_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">))</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">(</span><span class="n">proj_info_proj4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="n">proj_info</span><span class="o">$</span><span class="n">proj4string</span><span class="p">))</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NA</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs&#39;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">)</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NA</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4326</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">)</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="c1">#................................</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="n">rsa_country_tm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_transform</span><span class="p">(</span><span class="n">rsa_country_sf</span><span class="p">,</span><span class="w"> </span><span class="n">crs</span><span class="o">=</span><span class="m">3395</span><span class="p">)</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="nf">st_crs</span><span class="p">(</span><span class="n">rsa_country_tm</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="save-vector-data-to-local-drive">Save vector data to local drive</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">writeOGR</span><span class="p">(</span><span class="n">obj</span><span class="o">=</span><span class="n">rsa_district</span><span class="p">,</span><span class="w"> </span><span class="n">dsn</span><span class="o">=</span><span class="s">&#39;Data&#39;</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">         </span><span class="n">layer</span><span class="o">=</span><span class="s">&#39;rsa_district2&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">driver</span><span class="o">=</span><span class="s">&#39;ESRI Shapefile&#39;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">rsa_district_sf</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Data/rsa_country_tm.shp&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="convert-center-points-and-then-write-to-local-drive">Convert center points and then write to local drive</h5>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">(</span><span class="n">rsa_district_pts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_centroid</span><span class="p">(</span><span class="n">rsa_district_sf</span><span class="p">,</span><span class="w"> </span><span class="n">of_largest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_district_pts</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_district_sf</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nf">st_write</span><span class="p">(</span><span class="n">rsa_district_pts</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;rsa_district_pts2.shp&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">layer_options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;GEOMETRY=AS_XY&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="raster-data">Raster data</h3>
+<h4 id="raster-data-stucture">Raster Data Stucture</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">(</span><span class="n">dem_ter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rast</span><span class="p">(</span><span class="nf">system.file</span><span class="p">(</span><span class="s">&quot;raster/srtm.tif&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;spDataLarge&quot;</span><span class="p">)))</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">class</span><span class="p">(</span><span class="n">dem_ter</span><span class="p">);</span><span class="nf">plot</span><span class="p">(</span><span class="n">dem_ter</span><span class="p">)</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">(</span><span class="n">dem_ras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="nf">system.file</span><span class="p">(</span><span class="s">&quot;raster/srtm.tif&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;spDataLarge&quot;</span><span class="p">)))</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nf">class</span><span class="p">(</span><span class="n">dem_ras</span><span class="p">);</span><span class="nf">plot</span><span class="p">(</span><span class="n">dem_ras</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="setup-the-coordinate-systems">Setup the coordinate systems</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">(</span><span class="n">geo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;+proj=longlat +datum=WGS84 +no_defs&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Unprojected world Geodetic System (degrees) CRS(&quot;+init=epsg:4326&quot;)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="p">(</span><span class="n">utm36s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;+proj=utm +zone=36 +south +datum=WGS84 +units=m +no_defs&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Local UTM projection [36s] specific to KNP&#39;s longitude (meters)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">rsa_country.geo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rsa_country</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">rsa_country.tm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">spTransform</span><span class="p">(</span><span class="n">rsa_country.geo</span><span class="p">,</span><span class="nf">CRS</span><span class="p">(</span><span class="s">&#39;+init=epsg:3395&#39;</span><span class="p">))</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">rsa_country.tm</span>
+</code></pre></div>
+<h4 id="create-a-new-20km2-raster-based-on-the-extent-of-spdf">Create a new 20km2 raster based on the extent of SPDF</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">(</span><span class="n">grid20km</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="nf">extent</span><span class="p">(</span><span class="n">rsa_country.tm</span><span class="p">),</span><span class="n">res</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">20000</span><span class="p">,</span><span class="m">20000</span><span class="p">),</span><span class="w"> </span><span class="n">crs</span><span class="o">=</span><span class="nf">CRS</span><span class="p">(</span><span class="s">&#39;+init=epsg:3395&#39;</span><span class="p">)))</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="p">(</span><span class="n">grid20km</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="n">rsa_country.tm</span><span class="p">,</span><span class="n">res</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">20000</span><span class="p">,</span><span class="m">20000</span><span class="p">),</span><span class="w"> </span><span class="n">crs</span><span class="o">=</span><span class="nf">CRS</span><span class="p">(</span><span class="s">&#39;+init=epsg:3395&#39;</span><span class="p">)))</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">grid20km</span><span class="o">$</span><span class="n">site</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">ncell</span><span class="p">(</span><span class="n">grid20km</span><span class="p">)</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">grid20km</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1">#### Plot the raster</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># Reset display settings</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nf">dev.off</span><span class="p">()</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c1"># Now plot</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="nf">plot</span><span class="p">(</span><span class="n">grid20km</span><span class="p">)</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_country.tm</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="c1"># Remember to mask the background to NA</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="c1"># rsa_mask = rasterize(rsa_country.tm, grid20km)</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="n">rsa_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rasterize</span><span class="p">(</span><span class="n">rsa_country.tm</span><span class="p">,</span><span class="w"> </span><span class="n">grid20km</span><span class="p">[[</span><span class="m">1</span><span class="p">]],</span><span class="w"> </span><span class="n">background</span><span class="o">=</span><span class="kc">NA</span><span class="p">)</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_mask</span><span class="p">)</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="c1"># grid20km_mask = mask(grid20km,rsa_mask)</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="c1"># plot(grid20km_mask)</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_country.tm</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="c1">#Plot this Single-Band Raster Data</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="c1">#--------------------------------------------------</span>
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="nf">tm_shape</span><span class="p">(</span><span class="n">rsa_mask</span><span class="p">)</span><span class="o">+</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="w">  </span><span class="nf">tm_raster</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s">&#39;pretty&#39;</span><span class="p">)</span><span class="o">+</span>
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="w">  </span><span class="nf">tm_layout</span><span class="p">(</span><span class="n">legend.outside</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a><span class="c1">#--------------------------------------------------</span>
+</code></pre></div>
+<h4 id="save-raster-to-local-drive">Save raster to local drive</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">writeRaster</span><span class="p">(</span><span class="n">rsa_mask</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;grid20km_mask&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;GTiff&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="get-data-and-extract-to-area-of-interest">Get data and extract to area of interest</h4>
+<p>WorldClim (https://www.worldclim.org/data/index.html) global climatic and weather data @ 30 arc-second (~1km) grid</p>
+<p><strong><em>Bioclim variables</em></strong>
+Variable Description
+- BIO1  Annual Mean Temperature
+- BIO2  Mean Diurnal Range (Mean of monthly (max temp - min temp))
+- BIO3  Isothermality (BIO2/BIO7) (<em> 100)
+- BIO4  Temperature Seasonality (standard deviation </em>100)
+- BIO5  Max Temperature of Warmest Month
+- BIO6  Min Temperature of Coldest Month
+- BIO7  Temperature Annual Range (BIO5-BIO6)
+- BIO8  Mean Temperature of Wettest Quarter
+- BIO9  Mean Temperature of Driest Quarter
+- BIO10     Mean Temperature of Warmest Quarter
+- BIO11     Mean Temperature of Coldest Quarter
+- BIO12     Annual Precipitation
+- BIO13     Precipitation of Wettest Month
+- BIO14     Precipitation of Driest Month
+- BIO15     Precipitation Seasonality (Coefficient of Variation)
+- BIO16     Precipitation of Wettest Quarter
+- BIO17     Precipitation of Driest Quarter
+- BIO18     Precipitation of Warmest Quarter
+- BIO19     Precipitation of Coldest Quarter
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">bioclim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">getData</span><span class="p">(</span><span class="s">&#39;worldclim&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="o">=</span><span class="s">&#39;bio&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s">&#39;Data&#39;</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">bioclim</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># gain(bioclim)=0.1 # Must be multipled by 0.1 to convert back to degrees Celsius. </span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># # Also precipitation is in mm, so a gain of 0.1 would turn that into cm.</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nf">plot</span><span class="p">(</span><span class="n">bioclim</span><span class="p">[[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">]])</span><span class="w"> </span><span class="c1"># just the first 3, since its slow</span>
+</code></pre></div></p>
+<h4 id="subsetting-and-spatial-cropping">Subsetting and spatial cropping</h4>
+<p><strong><em>Crop using a Spatial polygon</em></strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># bio1.rsa = crop(bioclim[[1]], bbox(rsa_country))</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">bio1.rsa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">bioclim</span><span class="p">[[</span><span class="m">1</span><span class="p">]],</span><span class="w"> </span><span class="n">rsa_country</span><span class="p">)</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">bio1.rsa</span><span class="p">)</span><span class="w"> </span><span class="c1">#dimensions : 76, 98, 7448  (nrow, ncol, ncell) | resolution : 0.1666667, 0.1666667  (x, y)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="c1"># Note: Masking is different to cropping i.e. you get NA values for outside polygon area</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">bio1.rsa.mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">bio1.rsa</span><span class="p">,</span><span class="w"> </span><span class="n">rsa_country</span><span class="p">)</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="nf">plot</span><span class="p">(</span><span class="n">bio1.rsa.mask</span><span class="p">)</span>
+</code></pre></div></p>
+<h4 id="spatial-aggregation">Spatial aggregation</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Aggregate using a function</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">bio1.rsax3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">aggregate</span><span class="p">(</span><span class="n">bio1.rsa</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="o">=</span><span class="n">mean</span><span class="p">)</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">bio1.rsax3</span><span class="p">)</span><span class="w"> </span><span class="c1">#dimensions : 26, 33, 858  (nrow, ncol, ncell) | resolution : 0.5, 0.5  (x, y)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1"># Raster calculations</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="nf">cellStats</span><span class="p">(</span><span class="n">bio1.rsa</span><span class="p">,</span><span class="n">range</span><span class="p">);</span><span class="nf">cellStats</span><span class="p">(</span><span class="n">bio1.rsa</span><span class="p">,</span><span class="n">mean</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="extracting-raster-data">Extracting Raster Data</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">(</span><span class="n">bioclim.rsa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">bioclim</span><span class="p">,</span><span class="w"> </span><span class="n">rsa_country</span><span class="p">))</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nf">plot</span><span class="p">(</span><span class="n">bioclim.rsa</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">bioclim.rsa</span><span class="p">[[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">]])</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="c1"># define a new dataset of points to play with</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="n">pts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sampleRandom</span><span class="p">(</span><span class="n">bioclim.rsa</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="bp">T</span><span class="p">,</span><span class="n">sp</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># plot(pts);axis(1);axis(2)</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="nf">plot</span><span class="p">(</span><span class="n">bioclim.rsa</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nf">plot</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="nf">head</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="c1"># Extract data using a SpatialPoints object</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="n">ptsEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pts</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">]</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="nf">head</span><span class="p">(</span><span class="n">ptsEmpty</span><span class="p">)</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="n">pts.data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">extract</span><span class="p">(</span><span class="n">bioclim.rsa</span><span class="p">[[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">]],</span><span class="w"> </span><span class="n">ptsEmpty</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="o">=</span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">sp</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="nf">head</span><span class="p">(</span><span class="n">pts.data</span><span class="p">)</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="c1"># Create histogram of extracted values</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="nf">summary</span><span class="p">(</span><span class="n">pts.data</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="bin-data-using-custom-breaks">Bin data using custom breaks</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">pts.data</span><span class="o">@</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pts.data</span><span class="o">@</span><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="n">binBio1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cut</span><span class="p">(</span><span class="n">bio1</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">128</span><span class="p">,</span><span class="w"> </span><span class="m">150</span><span class="p">,</span><span class="w"> </span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="m">241</span><span class="p">)))</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1">#perform binning with specific number of bins</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">pts.data</span><span class="o">@</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pts.data</span><span class="o">@</span><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="n">binBio1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cut</span><span class="p">(</span><span class="n">bio1</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="o">=</span><span class="m">3</span><span class="p">))</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1"># Plot histograms - examples</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="c1"># counts</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="nf">ggplot</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">pts.data</span><span class="o">@</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">binBio1</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">  </span><span class="nf">geom_bar</span><span class="p">()</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pts.data</span><span class="o">@</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">binBio1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="nf">log10</span><span class="p">(</span><span class="n">bio1</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">  </span><span class="nf">geom_jitter</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">),</span><span class="n">alpha</span><span class="o">=</span><span class="m">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">  </span><span class="nf">geom_boxplot</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s">&quot;bisque&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="m">0.3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">&#39;log bio1 value per bin&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="w">  </span><span class="nf">guides</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="qgis-workshop-in-progress">QGIS Workshop (in progress)</h3>
+<p>A Free and Open Source Geographic Information System
+<a href="https://qgis.org/en/site/">https://qgis.org/en/site/</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/BioMath-Lab/biomath-docs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/xxxx" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/xxxxx" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

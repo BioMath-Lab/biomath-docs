@@ -1,0 +1,1206 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://biomath-lab.github.io/biomath-docs/sdm-r/">
+      
+      
+        <link rel="prev" href="../spatial-r/">
+      
+      
+        <link rel="next" href="../gee-py/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+    
+    
+      
+        <title>Species distribution modelling - BioMath Documents and Tutorials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#species-distribution-modelling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="BioMath Documents and Tutorials" class="md-header__button md-logo" aria-label="BioMath Documents and Tutorials" data-md-component="logo">
+      
+  <img src="../assets/su_w2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BioMath Documents and Tutorials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Species distribution modelling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../science-i/" class="md-tabs__link">
+          
+  
+    
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../spatial-r/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../dissimilarity-cube/" class="md-tabs__link">
+        
+  
+    
+  
+  Dissimilarity Cubes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../invasibility-cube/" class="md-tabs__link">
+        
+  
+    
+  
+  Invasibility Cubes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../impact-indicators/" class="md-tabs__link">
+        
+  
+    
+  
+  Impact Indicators
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="BioMath Documents and Tutorials" class="md-nav__button md-logo" aria-label="BioMath Documents and Tutorials" data-md-component="logo">
+      
+  <img src="../assets/su_w2.png" alt="logo">
+
+    </a>
+    BioMath Documents and Tutorials
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../science-i/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spatial-r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatial R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Species distribution modelling
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Species distribution modelling
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#an-introduction-to-species-distribution-modeling-and-environmental-data-integration-in-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      An Introduction to Species Distribution Modeling and Environmental Data Integration in R
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load libraries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-worldclim-climate-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download WorldClim climate data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crop-to-your-area-of-interest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crop to your area of interest
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#or-crop-to-country-borders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Or crop to country borders
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-raster-values-to-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extract raster values to points
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-your-own-tabular-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use your own tabular data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-data-from-gbif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get data from GBIF
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get data from GBIF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#citing-your-download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Citing your download
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-species-occurence-and-environmental-data-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with species occurence and environmental data tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-your-table-into-the-right-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get your table into the right format
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-site-generalised-dissimilarity-modelling-for-a-set-of-environmental-variables-and-distances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-site generalised dissimilarity modelling for a set of environmental variables and distances
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-site generalised dissimilarity modelling for a set of environmental variables and distances">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-compute-compositional-turnover-using-zeta-diversity" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Compute Compositional Turnover Using Zeta Diversity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdm-generalized-dissimilarity-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      gdm: Generalized Dissimilarity Modeling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gee-py/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dissimilarity-cube/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dissimilarity Cubes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../invasibility-cube/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Invasibility Cubes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../impact-indicators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Impact Indicators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="species-distribution-modelling">Species Distribution Modelling</h1>
+<p><img alt="example workflow" src="https://github.com/github/docs/actions/workflows/main.yml/badge.svg" /></p>
+<h2 id="an-introduction-to-species-distribution-modeling-and-environmental-data-integration-in-r">An Introduction to Species Distribution Modeling and Environmental Data Integration in R</h2>
+<p>Species Distribution Modeling (SDM) is a powerful method for predicting the potential distribution of species across different landscapes by analysing relationships between known species occurrences and environmental variables. SDMs are essential in conservation planning, allowing researchers and practitioners to identify critical habitats, model species response to environmental changes, and predict impacts of climate change. This tutorial makes extensive use of data from the <a href="https://www.gbif.org/">Global Biodiversity Information Facility</a> (GBIF), an international network and data platform providing open access to biodiversity occurrence records contributed by museums, scientific institutions, and citizen scientists worldwide. GBIF serves as a vital resource for biodiversity research, enabling users to access large datasets on species occurrences and environmental attributes.</p>
+<p><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1472-4642.2007.00341.x?msockid=110b07b8df4767290225134fde4766f6">Generalized Dissimilarity Modelling</a> (GDM) is an advanced method for examining patterns of ecological turnover across environmental gradients. GDM is especially useful for mapping and visualising dissimilarity in species composition and diversity across spatial scales. It helps identify the role of environmental variables and geographic distance in driving species distribution patterns. <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12756">Multi-Site Generalized Dissimilarity Modelling</a> (MS-GDM) is an extension of GDM designed for analysing multiple sites simultaneously, providing deeper insights into how communities differ across locations and allowing comparisons across varied environmental conditions.</p>
+<p><a href="https://www.journals.uchicago.edu/doi/10.1086/678125">Zeta Diversity</a> is an approach for examining biodiversity across multiple sites, quantifying the commonness and rarity of species shared between them. Zeta diversity goes beyond traditional pairwise comparisons, allowing researchers to analyse the turnover and nestedness of species composition across multiple locations, offering a robust tool for biodiversity assessment in complex landscapes.</p>
+<p>In this tutorial, participants will learn to use these techniques in R, combining occurrence and environmental data for SDM, MS-GDM, and Zeta Diversity analyses to support species conservation and ecosystem management. </p>
+<h2 id="load-libraries">Load libraries</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># See https://rsh249.github.io/bioinformatics/spatial.html</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># install.packages(&quot;ENMeval&quot;, INSTALL_opts=&quot;--no-multiarch&quot;)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nf">library</span><span class="p">(</span><span class="n">dismo</span><span class="p">)</span><span class="w"> </span><span class="c1"># Species Distribution Modeling tools</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span><span class="w"> </span><span class="c1"># R tools for GIS raster files &gt;&gt;&gt; USE terra{} instead</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">library</span><span class="p">(</span><span class="n">spocc</span><span class="p">)</span><span class="w"> </span><span class="c1"># Access species occurrence data from GBIF/iNaturalist</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nf">library</span><span class="p">(</span><span class="n">ENMeval</span><span class="p">)</span><span class="w"> </span><span class="c1"># Tuning SDMs</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># library(mapr) # Quick mapping tools</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nf">library</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nf">library</span><span class="p">(</span><span class="n">geodata</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nf">library</span><span class="p">(</span><span class="n">sfheaders</span><span class="p">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span><span class="w">        </span><span class="c1">## spread()</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="nf">library</span><span class="p">(</span><span class="n">reshape2</span><span class="p">)</span><span class="w">     </span><span class="c1">## dcast(), melt()</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="c1"># library(gdm)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nf">library</span><span class="p">(</span><span class="n">zetadiv</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="download-worldclim-climate-data">Download <a href="https://www.worldclim.org/data/index.html">WorldClim</a> climate data</h2>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Download the WorldClim Bioclimatic variables for the world at a 10 arc-minute resolution</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">bio_10m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">getData</span><span class="p">(</span><span class="s">&#39;worldclim&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="o">=</span><span class="s">&#39;bio&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s">&#39;D:/Workshops/Zeta_MSGDM/Data&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Set your own path directory</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Use geodata package instead</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">bio_10m_rsa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">worldclim_country</span><span class="p">(</span><span class="s">&quot;South Africa&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="o">=</span><span class="s">&quot;tmin&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s">&#39;D:/Workshops/Zeta_MSGDM/Data&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nf">summary</span><span class="p">(</span><span class="n">bio_10m</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">bio_10m</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="c1">#BIO1 = Annual Mean Temperature</span>
+</code></pre></div>
+Read descriptions/definitions of <a href="https://www.worldclim.org/data/bioclim.html">Bioclimatic variables</a>.</p>
+<h2 id="crop-to-your-area-of-interest">Crop to your area of interest</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Define &#39;extent&#39; of boundary</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># South Africa</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">rsa_ext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">extent</span><span class="p">(</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">33</span><span class="p">,</span><span class="w"> </span><span class="m">-35</span><span class="p">,</span><span class="w"> </span><span class="m">-22</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Crop Bioclimatic variables to extent of South African boundary</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">rsaExt_bio_10m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">bio_10m</span><span class="p">,</span><span class="w"> </span><span class="n">rsa_ext</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsaExt_bio_10m</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span><span class="w"> </span><span class="c1"># Basic plotting </span>
+</code></pre></div>
+<h2 id="or-crop-to-country-borders">Or crop to country borders</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Using GADM (gives a SpatialPolygonsDataFrame)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">rsa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">getData</span><span class="p">(</span><span class="s">&#39;GADM&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">country</span><span class="o">=</span><span class="s">&#39;South Africa&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">level</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="s">&#39;D:/Workshops/Zeta_MSGDM/Data&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># rsa = sf::st_as_sf(rsa)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># OR use geodata instead</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># rsa = gadm(country=&quot;ZA&quot;, level=1, path=&#39;D:/Workshops/Zeta_MSGDM/Data&#39;) # or path=tempdir()</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Use country_codes() to find correct code</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># cc = country_codes()</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># View(cc)</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># Basic National map</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nf">ggplot</span><span class="p">()</span><span class="o">+</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span><span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sf</span><span class="o">::</span><span class="nf">st_as_sf</span><span class="p">(</span><span class="n">rsa</span><span class="p">))</span><span class="o">+</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;South Africa&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Crop Bioclimatic variables to South African border</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">rsa_bio_10m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">bio_10m</span><span class="p">,</span><span class="w"> </span><span class="n">rsa</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_bio_10m</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span><span class="w"> </span><span class="c1"># See result</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># OR use geodata package instead</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># rsa_bio_10m = worldclim_country(&quot;South Africa&quot;, var=&quot;tmin&quot;, path=&#39;D:/Workshops/Zeta_MSGDM/Data&#39;)</span>
+</code></pre></div>
+<h2 id="extract-raster-values-to-points">Extract raster values to points</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Create 100 random points across South Africa</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">random_pts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">spsample</span><span class="p">(</span><span class="n">rsa</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;random&quot;</span><span class="p">)</span><span class="w">    </span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># See randomly generate points on RSA map</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nf">plot</span><span class="p">(</span><span class="n">rsa_bio_10m</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nf">plot</span><span class="p">(</span><span class="n">random_pts</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># Extract data to points</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">bio_values_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">extract</span><span class="p">(</span><span class="n">rsa_bio_10m</span><span class="p">,</span><span class="w"> </span><span class="n">random_pts</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># Use cbind.data.frame to get results as data.frame</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="n">bio_values_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cbind.data.frame</span><span class="p">(</span><span class="nf">coordinates</span><span class="p">(</span><span class="n">random_pts</span><span class="p">),</span><span class="w"> </span><span class="n">bio_values_1</span><span class="p">)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nf">head</span><span class="p">(</span><span class="n">bio_values_df</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="use-your-own-tabular-data">Use your own tabular data</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Read directly from csv file</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">all_lepidoptera.sf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_as_sf</span><span class="p">(</span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&#39;D:/Workshops/Zeta_MSGDM/Data/0097482-230224095556074.csv&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">coords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">crs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4326</span><span class="p">)</span><span class="w">  </span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nf">plot</span><span class="p">(</span><span class="n">all_lepidoptera.sf</span><span class="p">[</span><span class="s">&#39;family&#39;</span><span class="p">])</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1">###############################################################################</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># EXTRACT RASTER DATA TO POINT LOCALITIES</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Extract raster value by points</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">lepidop_enviro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">extract</span><span class="p">(</span><span class="n">rsa_bio_10m</span><span class="p">,</span><span class="w"> </span><span class="n">all_lepidoptera.sf</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">lepidop_enviro</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># Combine raster values with point and save as a CSV file.</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="n">lepidop_enviro.ptData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cbind</span><span class="p">(</span><span class="n">all_lepidoptera.sf</span><span class="p">,</span><span class="w"> </span><span class="n">lepidop_enviro</span><span class="p">)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># Check output</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nf">names</span><span class="p">(</span><span class="n">lepidop_enviro.ptData</span><span class="p">)</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="nf">head</span><span class="p">(</span><span class="n">lepidop_enviro.ptData</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="get-data-from-gbif">Get data from <a href="https://www.gbif.org/">GBIF</a></h2>
+<p>See <a href="https://poldham.github.io/abs/gbif.html">https://poldham.github.io/abs/gbif.html</a><br />
+First sign-up for a free account <a href="">here</a>.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span><span class="w">  </span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nf">library</span><span class="p">(</span><span class="n">rgbif</span><span class="p">)</span><span class="w"> </span><span class="c1"># for occ_download</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># fill in your gbif.org credentials </span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;xxxxxx&quot;</span><span class="w"> </span><span class="c1"># your gbif.org username </span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">pwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;xxxxxx&quot;</span><span class="w"> </span><span class="c1"># your gbif.org password</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;xxxx@xxxxx&quot;</span><span class="w"> </span><span class="c1"># your email</span>
+</code></pre></div>
+<p>The main functions related to downloads are:<br />
+<code>occ_download()</code>: start a download on GBIF servers.<br />
+<code>occ_download_prep()</code>: preview a download request before sending to GBIF.<br />
+<code>occ_download_get()</code>: retrieve a download from GBIF to your computer.<br />
+<code>occ_download_import()</code>: load a download from your computer to R.  </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">gbif_download</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">occ_data</span><span class="p">(</span><span class="n">scientificName</span><span class="o">=</span><span class="s">&#39;Lepidoptera&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">                         </span><span class="n">country</span><span class="o">=</span><span class="s">&#39;ZA&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">                         </span><span class="n">hasCoordinate</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">                         </span><span class="n">hasGeospatialIssue</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">                         </span><span class="n">limit</span><span class="o">=</span><span class="m">500</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">lepidoptera.df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">gbif_download</span><span class="o">$</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nf">head</span><span class="p">(</span><span class="n">lepidoptera.df</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="n">lepidop.df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lepidoptera.df</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">16</span><span class="p">,</span><span class="m">31</span><span class="o">:</span><span class="m">33</span><span class="p">,</span><span class="m">42</span><span class="o">:</span><span class="m">46</span><span class="p">)]</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># head(lepidop.df)</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="n">lepidop.sf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">st_as_sf</span><span class="p">(</span><span class="n">lepidop.df</span><span class="p">,</span><span class="w"> </span><span class="n">coords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;decimalLongitude&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;decimalLatitude&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">crs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4326</span><span class="p">)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="nf">plot</span><span class="p">(</span><span class="n">lepidop.sf</span><span class="p">[</span><span class="s">&#39;stateProvince&#39;</span><span class="p">])</span>
+</code></pre></div>
+<h3 id="citing-your-download">Citing your download</h3>
+<p>If you end up using your download in a research paper, you will want to cite the download’s DOI. Please see these <a href="https://www.gbif.org/citation-guidelines">citation guidelines</a> for properly citing your download.
+When using this dataset please use the following citation: 
+GBIF.org (16 March 2023) GBIF Occurrence Download <a href="https://doi.org/10.15468/dl.uvu2qm">https://doi.org/10.15468/dl.uvu2qm</a></p>
+<h2 id="working-with-species-occurence-and-environmental-data-tables">Working with species occurence and environmental data tables</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># CONVERT TO DATAFRAME</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># all_lepidoptera.df = as.data.frame(all_lepidoptera.sf)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">all_lepidoptera.df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">all_lepidoptera.sf</span><span class="p">,</span><span class="w"> </span><span class="nf">st_coordinates</span><span class="p">(</span><span class="n">all_lepidoptera.sf</span><span class="p">)))[,</span><span class="m">-11</span><span class="p">]</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nf">head</span><span class="p">(</span><span class="n">all_lepidoptera.df</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># lepidop_enviro.df = as.data.frame(lepidop_enviro.ptData)</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">lepidop_enviro.df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">lepidop_enviro.ptData</span><span class="p">,</span><span class="w"> </span><span class="nf">st_coordinates</span><span class="p">(</span><span class="n">lepidop_enviro.ptData</span><span class="p">)))[,</span><span class="m">-30</span><span class="p">]</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nf">head</span><span class="p">(</span><span class="n">lepidop_enviro.df</span><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># OR use sfheaders{}</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># lepidop_enviro.df = sf_to_df(lepidop_enviro.ptData, fill=TRUE)</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="c1"># head(lepidop_enviro.df)</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="c1"># str(lepidop_enviro.df)</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1"># summary(lepidop_enviro.df)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># SET COLUMN FORMATS</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">lepidop_enviro.df</span><span class="o">$</span><span class="n">nameF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">lepidop_enviro.df</span><span class="o">$</span><span class="n">scientific</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">lepidop_enviro.df</span><span class="o">$</span><span class="n">dateT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">lepidop_enviro.df</span><span class="o">$</span><span class="n">date</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nf">head</span><span class="p">(</span><span class="n">lepidop_enviro.df</span><span class="p">)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># Create unique SITE IDs</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">lepidop_enviro.df</span><span class="o">$</span><span class="n">unqIDF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="nf">as.integer</span><span class="p">(</span><span class="nf">as.factor</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">lepidop_enviro.df</span><span class="o">$</span><span class="n">X</span><span class="p">,</span><span class="n">lepidop_enviro.df</span><span class="o">$</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&#39;_&#39;</span><span class="p">))))</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nf">head</span><span class="p">(</span><span class="n">lepidop_enviro.df</span><span class="p">)</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="nf">str</span><span class="p">(</span><span class="n">lepidop_enviro.df</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="get-your-table-into-the-right-format">Get your table into the right format</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># str(lepidop_enviro.df)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">head</span><span class="p">(</span><span class="n">lepidop_enviro.df</span><span class="p">)</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">lepidop_enviro.pa</span><span class="w"> </span><span class="o">=</span><span class="n">lepidop_enviro.df</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">unqIDF</span><span class="p">,</span><span class="w"> </span><span class="nf">across</span><span class="p">(</span><span class="m">28</span><span class="o">:</span><span class="m">29</span><span class="p">),</span><span class="w"> </span><span class="n">nameF</span><span class="p">,</span><span class="w"> </span><span class="nf">across</span><span class="p">(</span><span class="m">9</span><span class="o">:</span><span class="m">27</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">  </span><span class="nf">tally</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span><span class="nf">spread</span><span class="p">(</span><span class="n">nameF</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nf">head</span><span class="p">(</span><span class="n">lepidop_enviro.pa</span><span class="p">)</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1"># View(lepidop_enviro.pa)</span>
+</code></pre></div>
+<h2 id="multi-site-generalised-dissimilarity-modelling-for-a-set-of-environmental-variables-and-distances">Multi-site generalised dissimilarity modelling for a set of environmental variables and distances</h2>
+<h3 id="how-to-compute-compositional-turnover-using-zeta-diversity">How to Compute Compositional Turnover Using Zeta Diversity</h3>
+<p>Using zetadiv: <a href="https://rdrr.io/cran/zetadiv/man/Zeta.msgdm.html">https://rdrr.io/cran/zetadiv</a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">lepidop_enviro.pa_noNA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lepidop_enviro.pa</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">lepidop_enviro.pa</span><span class="p">),</span><span class="w"> </span><span class="p">]</span><span class="w"> </span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">Sitexy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">lepidop_enviro.pa_noNA</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">])</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># xy = st_as_sf(Sitexy, coords = c(&quot;X&quot;, &quot;Y&quot;), crs = 4326)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">xy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">lepidop_enviro.pa_noNA</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">])</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">envRast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rsa_bio_10m</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">envTab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">lepidop_enviro.pa_noNA</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">22</span><span class="p">)])</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="n">sppTab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">lepidop_enviro.pa_noNA</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="m">23</span><span class="o">:</span><span class="m">1109</span><span class="p">)])</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="c1"># envRast</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="c1"># str(envTab) # 5430 obs(sites) of  20 variables(enviro)</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="c1"># str(sppTab) # 5430 obs(sites) of  1088 variables(species)</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="c1"># ##site-species, table-table</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="c1"># exFormat1a = formatsitepair(sppTab, 1, siteColumn=&quot;unqIDF&quot;, XColumn=&quot;X&quot;, YColumn=&quot;Y&quot;, predData=envTab)</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="c1"># exFormat1a</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="c1"># </span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="c1"># ##site-species, table-raster</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="c1"># exFormat1b = formatsitepair(sppTab, 1, siteColumn=&quot;unqIDF&quot;, XColumn=&quot;X&quot;, YColumn=&quot;Y&quot;, predData=envRast)</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="c1"># exFormat1b</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="c1"># </span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="c1"># # plot(exFormat1b, plot.layout=c(2,3))</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="c1"># plot(exFormat1b[[1]])</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># OR USE tidyr</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sppTab</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nf">pivot_longer</span><span class="p">(</span><span class="o">!</span><span class="nf">c</span><span class="p">(</span><span class="n">unqIDF</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">),</span><span class="w"> </span><span class="n">names_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;nameF&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">values_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Dealing with biases associated with presence-only data</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1">#--------------------------------------</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># weight by site richness</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># long[complete.cases(long), ]</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">gdmTab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">formatsitepair</span><span class="p">(</span><span class="n">long</span><span class="p">,</span><span class="w"> </span><span class="n">bioFormat</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">XColumn</span><span class="o">=</span><span class="s">&quot;X&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">YColumn</span><span class="o">=</span><span class="s">&quot;Y&quot;</span><span class="p">,</span><span class="n">abundColumn</span><span class="o">=</span><span class="s">&#39;value&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">                         </span><span class="n">sppColumn</span><span class="o">=</span><span class="s">&quot;nameF&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">siteColumn</span><span class="o">=</span><span class="s">&quot;unqIDF&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">predData</span><span class="o">=</span><span class="n">envTab</span><span class="p">)</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="n">gdmTab.rw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">formatsitepair</span><span class="p">(</span><span class="n">long</span><span class="p">,</span><span class="w"> </span><span class="n">bioFormat</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">XColumn</span><span class="o">=</span><span class="s">&quot;X&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">YColumn</span><span class="o">=</span><span class="s">&quot;Y&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">                            </span><span class="n">sppColumn</span><span class="o">=</span><span class="s">&quot;nameF&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">siteColumn</span><span class="o">=</span><span class="s">&quot;unqIDF&quot;</span><span class="p">,</span><span class="n">abundColumn</span><span class="o">=</span><span class="s">&#39;value&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">                            </span><span class="n">predData</span><span class="o">=</span><span class="n">envTab</span><span class="p">,</span><span class="w"> </span><span class="n">weightType</span><span class="o">=</span><span class="s">&quot;richness&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="c1"># weights based on richness (number of species records)</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="n">gdmTab.rw</span><span class="o">$</span><span class="n">weights</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="c1"># remove sites with &lt; 10 species records</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="n">gdmTab.sf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">formatsitepair</span><span class="p">(</span><span class="n">long</span><span class="p">,</span><span class="w"> </span><span class="n">bioFormat</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">XColumn</span><span class="o">=</span><span class="s">&quot;X&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">YColumn</span><span class="o">=</span><span class="s">&quot;Y&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">                            </span><span class="n">sppColumn</span><span class="o">=</span><span class="s">&quot;nameF&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">siteColumn</span><span class="o">=</span><span class="s">&quot;unqIDF&quot;</span><span class="p">,</span><span class="n">abundColumn</span><span class="o">=</span><span class="s">&#39;value&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">                            </span><span class="n">predData</span><span class="o">=</span><span class="n">envTab</span><span class="p">,</span><span class="w"> </span><span class="n">sppFilter</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="gdm-generalized-dissimilarity-modeling"><code>gdm</code>: Generalized Dissimilarity Modeling</h3>
+<p><a href="https://github.com/fitzLab-AL/GDM">Read more about <code>gdm</code> analysis here</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">gdm.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">gdm</span><span class="p">(</span><span class="n">gdmTab.sf</span><span class="p">,</span><span class="w"> </span><span class="n">geo</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1">#summary(gdm.1)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nf">str</span><span class="p">(</span><span class="n">gdm.1</span><span class="p">)</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># gdm plots</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1">#--------------------------------------------------------</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nf">length</span><span class="p">(</span><span class="n">gdm.1</span><span class="o">$</span><span class="n">predictors</span><span class="p">)</span><span class="w"> </span><span class="c1"># get idea of number of panels</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nf">plot</span><span class="p">(</span><span class="n">gdm.1</span><span class="p">,</span><span class="w"> </span><span class="n">plot.layout</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">gdm.1.splineDat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">isplineExtract</span><span class="p">(</span><span class="n">gdm.1</span><span class="p">)</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="nf">str</span><span class="p">(</span><span class="n">gdm.1.splineDat</span><span class="p">)</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="nf">plot</span><span class="p">(</span><span class="n">gdm.1.splineDat</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="s">&quot;Geographic&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">gdm.1.splineDat</span><span class="o">$</span><span class="n">y</span><span class="p">[,</span><span class="s">&quot;Geographic&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">     </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Geographic distance&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Partial ecological distance&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">zeta.ispline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Zeta.msgdm</span><span class="p">(</span><span class="n">sppTab</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="o">:</span><span class="m">1088</span><span class="p">)],</span><span class="w"> </span><span class="n">envTab</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="o">:</span><span class="m">20</span><span class="p">)],</span><span class="w"> </span><span class="n">xy</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="o">=</span><span class="m">2</span><span class="p">,</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">                          </span><span class="n">rescale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">                          </span><span class="n">rescale.pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">                          </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mean&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">                          </span><span class="n">normalize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Jaccard&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">                          </span><span class="n">reg.type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ispline&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">                          </span><span class="n">sam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="c1"># zeta.ispline.r = Return.ispline(zeta.ispline, envTab[,c(4:20)], distance = TRUE)</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="c1"># zeta.ispline.r</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="nf">dev.new</span><span class="p">()</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="nf">Plot.ispline</span><span class="p">(</span><span class="n">msgdm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeta.ispline</span><span class="p">,</span><span class="w"> </span><span class="n">data.env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envTab</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="o">:</span><span class="m">20</span><span class="p">)],</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/BioMath-Lab/biomath-docs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/xxxx" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/xxxxx" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
