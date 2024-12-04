@@ -46,7 +46,8 @@ Automate access and preprocessing of species occurrence data from sources such a
   
 
 
-![dissim_1](assets/dissim_1.png)
+<img src="assets/dissim_1.png" alt="dissim_1" width="500">
+
 
 ---
 
@@ -81,7 +82,7 @@ Automate access and preprocessing of environmental data using diverse sources (e
 `get_enviro`: Retrieves georeferenced environmental data (e.g., climate, soil) and clips it to the study area extent, making it compatible with species data.  
 
 
-![dissim_2](assets/dissim_2b.png)
+<img src="assets/dissim_2b.png" alt="dissim_2b" width="500">  
 
 
 #### Data Formatting  
