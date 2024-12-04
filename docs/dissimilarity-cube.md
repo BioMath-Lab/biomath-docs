@@ -43,6 +43,10 @@ Data will be obtained from i) local sources; ii) Global Biodiversity Information
 Automate access and preprocessing of species occurrence data from sources such as local databases, the Global Biodiversity Information Facility (GBIF), and species occurrence cubes. This involves assembling data on species distributions across specified taxonomic groups and regions, resulting in matrices that quantify species co-occurrence within locations.
 
 `get_species`: Fetches and formats species occurrence data from various sources (e.g., local databases, GBIF), creating presence-absence or abundance matrices.  
+  
+
+
+![dissim_1](assets/dissim_1.png)
 
 ---
 
@@ -50,9 +54,12 @@ Automate access and preprocessing of species occurrence data from sources such a
 
 | site_id | x (longitude) | y (latitude) | sp_name (species) | pa (presence/absence) | abund (abundance) |
 |---------|---------------|--------------|-------------------|-----------------------|-------------------|
-| 1.0     | 1.0           | 1.0          | Species A         | 1                     | 5                 |
-| 2.0     | 1.0           | 1.0          | Species B         | 0                     | 0                 |
-| 3.0     | 1.0           | 1.0          | Species C         | 1                     | 2                 |
+| 1	      | 30.0	      | -20.0	     | Pieris brassicae	 | 1                     | 5                 |
+| 2	      |	31.0	      |	-21.0	     | Eutricha capensis | 1                     | 10                |
+| 2	      |	31.0	      |	-21.0	     | Acraea horta	     | 1                     | 1                 |
+| 3	      |	32.0	      |	-22.0	     | Dixeia charina	 | 1                     | 2                 |
+| 3	      |	32.0	      |	-22.0	     | Pieris brassicae	 | 1                     | 4                 |
+| 3	      |	32.0	      |	-22.0	     | Acraea horta	     | 1                     | 12                |
 
 ---
 
@@ -60,15 +67,21 @@ Automate access and preprocessing of species occurrence data from sources such a
 
 | site_id | x (longitude) | y (latitude) | sp_1 (pa/abund) | sp_2 (pa/abund) | sp_3 (pa/abund) | sp_4 (pa/abund) |
 |---------|---------------|--------------|-----------------|-----------------|-----------------|-----------------|
-| Row 1   | 1.0           | 1.0          | 1.0             | 1.0             | 1.0             | 1.0             |
-| Row 2   | 1.0           | 1.0          | 1.0             | 1.0             | 1.0             | 1.0             |
-| Row 3   | 1.0           | 1.0          | 1.0             | 1.0             | 1.0             | 1.0             |
+| 1       | 30.0	      | -20.0        | 1               | 0               | 0               | 0               |
+| 2       | 31.0	      |	-21.0        | 0               | 1               | 1               | 0               |
+| 3       | 32.0	      |	-22.0        | 1               | 0               | 1               | 1               |
+
+---  
 
 #### Environmental Data  
-Environmental data are sourced from i) local sources, ii) [WorldClim](https://ouicodedata.com/posts/worldclim-with-r/) using `geodata`, iii) [CHELSA](https://onlinelibrary.wiley.com/doi/full/10.1111/jvs.13215?msockid=110b07b8df4767290225134fde4766f6) using [`climenv`](https://chelsa-climate.org/), and iv) additional [biodiversity data](https://mapme-initiative.github.io/mapme.biodiversity/index.html) using `mapme.biodiversity`.
+Environmental data are sourced from i) local sources, ii) [WorldClim](https://ouicodedata.com/posts/worldclim-with-r/) using `geodata`, iii) [CHELSA](https://onlinelibrary.wiley.com/doi/full/10.1111/jvs.13215?msockid=110b07b8df4767290225134fde4766f6) using [`climenv`](https://chelsa-climate.org/), iv) [Google Earth Engine](https://r-spatial.github.io/rgee/) using `rgee`, and v) additional [biodiversity data](https://mapme-initiative.github.io/mapme.biodiversity/index.html) using `mapme.biodiversity`.
 Automate access and preprocessing of environmental data using diverse sources (e.g., local records, WorldClim, CHELSA, GEE) to compile georeferenced environmental layers (e.g., climate, soil, topography) that are essential for understanding ecological drivers of species distributions.
 
-`get_enviro`: Retrieves georeferenced environmental data (e.g., climate, soil) and clips it to the study area extent, making it compatible with species data.
+
+`get_enviro`: Retrieves georeferenced environmental data (e.g., climate, soil) and clips it to the study area extent, making it compatible with species data.  
+
+
+![dissim_2](assets/dissim_2b.png)
 
 
 #### Data Formatting  
@@ -86,9 +99,9 @@ Organizes the prepared data into structured data frames for easy access during a
 
 | site_id | x (longitude) | y (latitude) |
 |---------|---------------|--------------|
-| Site_1  | 31.50         | -24.20       |
-| Site_2  | 31.51         | -24.21       |
-| Site_3  | 31.52         | -24.22       |
+| 1       | 30.0	      | -20.0        |
+| 2       | 31.0	      |	-21.0        |
+| 3       | 32.0	      |	-22.0        |
 
 ---
 
@@ -96,9 +109,9 @@ Organizes the prepared data into structured data frames for easy access during a
 
 | site_id | sp_1 (pa/abund) | sp_2 (pa/abund) | sp_3 (pa/abund) | sp_4 (pa/abund) | sp_... (pa/abund) |
 |---------|-----------------|-----------------|-----------------|-----------------|-------------------|
-| Site_1  | 1.0             | 1.0             | 1.0             | 1.0             | 1.0               |
-| Site_2  | 1.0             | 1.0             | 1.0             | 1.0             | 1.0               |
-| Site_3  | 1.0             | 1.0             | 1.0             | 1.0             | 1.0               |
+| 1       | 1               | 0               | 0               | 0               | 1                 |
+| 2       | 0               | 1               | 1               | 0               | 1                 |
+| 3       | 1               | 0               | 1               | 1               | 1                 |
 
 ---
 
@@ -106,9 +119,9 @@ Organizes the prepared data into structured data frames for easy access during a
 
 | site_id | enviro_1 (variable) | enviro_2 (variable) | enviro_3 (variable) | enviro_4 (variable) |
 |---------|---------------------|---------------------|---------------------|---------------------|
-| Site_1  | 1.0                 | 1.0                 | 1.0                 | 1.0                 |
-| Site_2  | 1.0                 | 1.0                 | 1.0                 | 1.0                 |
-| Site_3  | 1.0                 | 1.0                 | 1.0                 | 1.0                 |
+| 1       | 30                  | 0.123               |	1                   | 1.45                |
+| 2       | 20                  | 0.812               |	5                   | 8.82                |
+| 3       | 10                  | 0.021               |	4                   | 2.040               |
 
 
 ### Species Co-occurrence and Compositional Analysis  
