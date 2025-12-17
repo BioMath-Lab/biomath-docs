@@ -1,4 +1,3 @@
-![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 # ![biomath](docs/assets/logo.png)
 
 # Mathematical Bioscience Lab

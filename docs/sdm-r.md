@@ -1,5 +1,4 @@
 # Species Distribution Modelling
-![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
 ## An Introduction to Species Distribution Modeling and Environmental Data Integration in R
 

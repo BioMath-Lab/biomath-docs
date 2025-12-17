@@ -1,5 +1,4 @@
 # Google Earth Engine
-![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
 ## Getting started with Google Earth Engine
 

@@ -1,5 +1,4 @@
 # Invasibility cube
-![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
 <!-- {:.alert .alert-warning}
 This page is not yet complete. -->
